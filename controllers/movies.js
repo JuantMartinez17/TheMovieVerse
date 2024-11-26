@@ -12,7 +12,7 @@ export class MoviesController {
     const { id } = req.params
     const movie = await MovieModel.getById({ id })
     if (movie) {
-      res.json(movie)
+      return res.json(movie)
     }
     res.status(404).json({ message: '404 Movie not found' })
   }

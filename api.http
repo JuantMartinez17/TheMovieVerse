@@ -26,3 +26,5 @@ Content-Type: application/json
 {
     "year": 1994
 }
+###Eliminar una pelicula
+DELETE http://localhost:3000/movies/50d35fd2-4867-4662-b219-d6d9bcbde8d2
