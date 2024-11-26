@@ -1,13 +1,14 @@
-const express = require('express');
-const app = express();
-app.disable('x-powered-by');
-const crypto = require('node:crypto');
-const movies = require('./movies.json');
+const express = require('express')
+const app = express()
+app.disable('x-powered-by')
+const crypto = require('node:crypto')
+const movies = require('./movies.json')
+const { validateMovie } = require('./schemas/movies')
 
 app.use(express.json())
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Hello World!' });
+  res.json({ message: 'Hello World!' })
 })
 
 app.get('/movies', (req, res) => {
@@ -31,34 +32,20 @@ app.get('/movies/:id', (req, res) => {
 })
 
 app.post('/movies', (req, res) => {
-  const { 
-    title,
-    year,
-    director,
-    duration,
-    poster,
-    genre,
-    rate
-  } = req.body
-  if (!title || !year || !director || !duration || !poster || !genre) {
-    return res.status(400).json({ message: 'Missing required fields' })
+  const result = validateMovie(req.body)
+  if (result.error) {
+    return res.status(400).json({ error: JSON.parse(result.error.message) })
   }
   const newMovie = {
     id: crypto.randomUUID(),
-    title,
-    year,
-    director,
-    duration,
-    poster,
-    genre,
-    rate: rate ?? 0
+    ...result.data
   }
   movies.push(newMovie)
   res.status(201).json(newMovie)
 })
 
-const PORT = process.env.PORT ?? 3000;
+const PORT = process.env.PORT ?? 3000
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`)
 })
