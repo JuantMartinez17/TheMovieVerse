@@ -40,6 +40,9 @@ app.post('/movies', (req, res) => {
     genre,
     rate
   } = req.body
+  if (!title || !year || !director || !duration || !poster || !genre) {
+    return res.status(400).json({ message: 'Missing required fields' })
+  }
   const newMovie = {
     id: crypto.randomUUID(),
     title,
