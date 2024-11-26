@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/movies', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*')
   const { genre } = req.query
   if (genre) {
     const filteredMovies = movies.filter(
