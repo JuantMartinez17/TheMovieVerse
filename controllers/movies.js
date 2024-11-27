@@ -1,47 +1,71 @@
-import { MovieModel } from '../models/movie.js'
-import { validateMovie, validatePartialMovie } from '../schemas/movies.js'
+import Movie from '../models/movie.js'
 
 export class MoviesController {
   static async getAll (req, res) {
-    const { genre } = req.query
-    const movies = await MovieModel.getAll({ genre })
-    res.json(movies)
+    try {
+      const { genre } = req.query
+
+      if (genre) {
+        const movies = await Movie.findAll()
+        const filteredMovies = movies.filter((movie) =>
+          movie.genre.some((g) => g.toLowerCase() === genre.toLowerCase())
+        )
+        return res.json(filteredMovies)
+      }
+
+      const movies = await Movie.findAll()
+      res.json(movies)
+    } catch (error) {
+      res.status(500).json({ error: error.message })
+    }
   }
 
   static async getById (req, res) {
-    const { id } = req.params
-    const movie = await MovieModel.getById({ id })
-    if (movie) {
-      return res.json(movie)
+    try {
+      const { id } = req.params
+      const movie = await Movie.findByPk(id)
+      if (movie) {
+        return res.json(movie)
+      }
+      res.status(404).json({ message: '404 Movie not found' })
+    } catch (error) {
+      res.status(500).json({ error: error.message })
     }
-    res.status(404).json({ message: '404 Movie not found' })
   }
 
   static async create (req, res) {
-    const result = validateMovie(req.body)
-    if (result.error) {
-      return res.status(400).json({ error: JSON.parse(result.error.message) })
+    try {
+      const newMovie = await Movie.create(req.body)
+      res.status(201).json(newMovie)
+    } catch (error) {
+      res.status(400).json({ error: error.message })
     }
-    const newMovie = await MovieModel.create({ input: result.data })
-    res.status(201).json(newMovie)
   }
 
   static async update (req, res) {
-    const result = validatePartialMovie(req.body)
-    if (result.error) {
-      return res.status(400).json({ error: JSON.parse(result.error.message) })
+    try {
+      const { id } = req.params
+      const [updated] = await Movie.update(req.body, { where: { id } })
+      if (!updated) {
+        return res.status(404).json({ message: '404 Movie not found' })
+      }
+      const updatedMovie = await Movie.findByPk(id)
+      res.status(200).json(updatedMovie)
+    } catch (error) {
+      res.status(400).json({ error: error.message })
     }
-    const { id } = req.params
-    const updatedMovie = await MovieModel.update({ id, input: result.data })
-    return res.status(200).json(updatedMovie)
   }
 
   static async delete (req, res) {
-    const { id } = req.params
-    const result = await MovieModel.delete({ id })
-    if (result === false) {
-      return res.status(404).json({ message: '404 Movie not found' })
+    try {
+      const { id } = req.params
+      const deleted = await Movie.destroy({ where: { id } })
+      if (!deleted) {
+        return res.status(404).json({ message: '404 Movie not found' })
+      }
+      res.json({ message: 'Movie deleted' })
+    } catch (error) {
+      res.status(500).json({ error: error.message })
     }
-    return res.json({ message: 'Movie deleted' })
   }
 }
