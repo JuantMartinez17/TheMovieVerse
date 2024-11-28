@@ -1,8 +1,8 @@
 {
-  "name": "apirest_express",
+  "name": "backend",
   "version": "1.0.0",
   "description": "Complete api REST using express",
-  "main": "index.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JuantMartinez17/APIREST_Express.git"
+    "url": "git+https://github.com/JuantMartinez17/ProgramacionWebII"
   },
   "keywords": [
     "express",
@@ -19,14 +19,15 @@
   "author": "Juan Tomas Martinez",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JuantMartinez17/APIREST_Express/issues"
+    "url": "https://github.com/JuantMartinez17/ProgramacionWebII/issues"
   },
-  "homepage": "https://github.com/JuantMartinez17/APIREST_Express#readme",
+  "homepage": "https://github.com/JuantMartinez17/ProgramacionWebII#readme",
   "devDependencies": {
     "nodemon": "^3.1.7",
     "standard": "^17.1.2"
   },
   "dependencies": {
+    "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "express": "4.21.1",
     "picocolors": "^1.1.1",

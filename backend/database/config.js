@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 
 const sequelize = new Sequelize({
     storage: process.env.DB_NAME,
-    dialect: 'sqlite',
+    dialect: process.env.DB_DIALECT,
     define: {
         defaultScope: {
             attributes: { exclude: ['createdAt', 'updatedAt'] },
