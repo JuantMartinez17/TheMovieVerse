@@ -45,19 +45,19 @@ export class MovieModel {
       return { error: error.message }
     }
   }
-
-  static async update (id, input) {
+  static async update(id, input) {
     try {
-      movieId = Number(id)
-      const movie = await Movie.findByPk(movieId)
+      const movieId = Number(id);
+      const movie = await Movie.findByPk(movieId);
       if (!movie) {
-        return { error:{ code: 404, message: 'Movie not found' }, movie}
-      }else {
-        await movie.update(input)
-        return { error: null, movie }
+        return { error: { code: 404, message: 'Movie not found' }, movie: null };
       }
-    }catch (error) {
-      console.error(p.red('Error updating movie: ', error))
+      await movie.update(input);
+      const updatedMovie = await Movie.findByPk(movieId); 
+      return { error: null, movie: updatedMovie };
+    } catch (error) {
+      console.error('Error updating movie:', error);
+      return { error: { code: 500, message: 'Internal Server Error' }, movie: null };
     }
   }
 }

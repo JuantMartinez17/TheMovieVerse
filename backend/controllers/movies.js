@@ -48,28 +48,25 @@ export class MoviesController {
     }
   }
 
-  static async update (req, res) {
+  static async update(req, res) {
     try {
-      const { id } = req.params
-      const input = req.body
-      const movieId = Number(id)
-      console.log('ID to update:', id);
-      console.log('Update data: ', req.body)
-      const { error, movie } = await MovieModel.update(id, input)
+      const { id } = req.params;
+      const input = req.body;
+      const { error, movie } = await MovieModel.update(id, input);
       if (error) {
-        return res.status(404).json({ message: '404 Movie not found' })
+        return res.status(error.code || 500).json({ message: error.message });
       }
-      const updatedMovie = await MovieModel.getById(id)
-      res.status(200).json(updatedMovie)
+      res.status(200).json(movie);
     } catch (error) {
-      res.status(400).json({ error: error.message })
+      console.error('Error in controller:', error.message); // Loguear el error en el controlador
+      res.status(500).json({ message: 'Internal server error' }); // Error genérico si algo falla
     }
   }
 
   static async delete (req, res) {
     try {
       const { id } = req.params
-      const deleted = await MovieModel.destroy({ where: { id } })
+      const deleted = await MovieModel.delete({ where: { id } })
       if (!deleted) {
         return res.status(404).json({ message: '404 Movie not found' })
       }
