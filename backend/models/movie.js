@@ -2,8 +2,10 @@ import { Movie } from '../database/config.js'
 import p from 'picocolors'
 
 export class MovieModel {
-  static async getAll() {
-    const movies = await Movie.findAll()
+  static async getAll({ genre } = {}) {
+    console.log('genre:', genre)
+    const query = genre ? { where: { genre } } : {}
+    const movies = await Movie.findAll(query)
     return { movies }
   }
 

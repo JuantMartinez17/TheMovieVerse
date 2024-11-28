@@ -1,15 +1,16 @@
 import { DataTypes, Sequelize} from 'sequelize'
-import { populateDatabase } from './populate'
+import { populateDatabase } from './populate.js'
 import p from 'picocolors'
-const express = require('express')
+import express from 'express'
+import { corsMiddleware } from '../middlewares/cors.js'
 const app = express()
-const PORT = process.env.PORT || 3000 
-app.use(cors())
-app.use(bodyParser.json())
+const PORT = process.env.PORT || 3001 
+app.use(corsMiddleware())
+app.use(express.json())
 
 const sequelize = new Sequelize({
     storage: process.env.DB_NAME,
-    dialect: process.env.DB_DIALECT,
+    dialect: 'sqlite',
     define: {
         defaultScope: {
             attributes: { exclude: ['createdAt', 'updatedAt'] },

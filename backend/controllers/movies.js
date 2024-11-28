@@ -1,22 +1,25 @@
-import { MovieModel } from "../models/movie"
+import { MovieModel } from "../models/movie.js"
+import p from 'picocolors'
 //TODO: Implement the controller using new MovieModel
 export class MoviesController {
   static async getAll (req, res) {
     try {
-      const { genre } = req.query
-
+      let { genre } = req.query
+      let movies
       if (genre) {
-        const movies = await Movie.findAll()
-        const filteredMovies = movies.filter((movie) =>
-          movie.genre.some((g) => g.toLowerCase() === genre.toLowerCase())
-        )
-        return res.json(filteredMovies)
+        genre = genre.charAt(0).toUpperCase() + genre.slice(1).toLowerCase();
+        console.log(genre)
+        movies = await MovieModel.getAll({ genre });
+      } else {
+        movies = await MovieModel.getAll();
       }
-
-      const movies = await Movie.findAll()
-      res.json(movies)
+      if (!movies || movies.length === 0) {
+        return res.status(404).json({ error: 'Movies not found' });
+      }
+      res.status(200).json(movies)
     } catch (error) {
-      res.status(500).json({ error: error.message })
+      console.error(p.red(`Error fetching movies: ${error.message}`))
+      res.status(500).json({ message: 'Internal server error' })
     }
   }
 
