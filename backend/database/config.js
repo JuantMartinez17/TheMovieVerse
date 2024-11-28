@@ -149,3 +149,9 @@ sequelize.sync()
     .catch((error) => {
         console.error(p.red('Error connecting to the database: ', error))
     })
+
+export {
+    User,
+    Movie,
+    Review,
+}
