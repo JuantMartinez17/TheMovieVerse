@@ -14,14 +14,15 @@ Content-Type: application/json
     "director": "Francis Ford Coppola",
     "duration": 175,
     "poster": "https://img.fruugo.com/product/4/49/14441494_max.jpg",
-    "genre": "drama"
+    "genre": "drama",
+    "rate": 9.2
 }
 ###Actualizar una pelicula
-PATCH http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+PATCH http://localhost:3000/movies/2
 Content-Type: application/json
 
 {
-    "year": 1994
+    "year": 1968
 }
 ###Eliminar una pelicula
-DELETE http://localhost:3000/movies/50d35fd2-4867-4662-b219-d6d9bcbde8d2
+DELETE http://localhost:3000/movies/21

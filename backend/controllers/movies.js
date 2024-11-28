@@ -8,7 +8,6 @@ export class MoviesController {
       let movies
       if (genre) {
         genre = genre.charAt(0).toUpperCase() + genre.slice(1).toLowerCase();
-        console.log(genre)
         movies = await MovieModel.getAll({ genre });
       } else {
         movies = await MovieModel.getAll();
@@ -26,7 +25,7 @@ export class MoviesController {
   static async getById (req, res) {
     try {
       const { id } = req.params
-      const movie = await Movie.findByPk(id)
+      const movie = await MovieModel.getById({ id })
       if (movie) {
         return res.json(movie)
       }
@@ -38,7 +37,11 @@ export class MoviesController {
 
   static async create (req, res) {
     try {
-      const newMovie = await Movie.create(req.body)
+      console.log(req.body.genre)
+      req.body.genre = req.body.genre.charAt(0).toUpperCase() + req.body.genre.slice(1).toLowerCase();
+      console.log(req.body.genre)
+      console.log('Request body: ', req.body)
+      const newMovie = await MovieModel.create(req.body)
       res.status(201).json(newMovie)
     } catch (error) {
       res.status(400).json({ error: error.message })
@@ -48,11 +51,15 @@ export class MoviesController {
   static async update (req, res) {
     try {
       const { id } = req.params
-      const [updated] = await Movie.update(req.body, { where: { id } })
-      if (!updated) {
+      const input = req.body
+      const movieId = Number(id)
+      console.log('ID to update:', id);
+      console.log('Update data: ', req.body)
+      const { error, movie } = await MovieModel.update(id, input)
+      if (error) {
         return res.status(404).json({ message: '404 Movie not found' })
       }
-      const updatedMovie = await Movie.findByPk(id)
+      const updatedMovie = await MovieModel.getById(id)
       res.status(200).json(updatedMovie)
     } catch (error) {
       res.status(400).json({ error: error.message })
@@ -62,7 +69,7 @@ export class MoviesController {
   static async delete (req, res) {
     try {
       const { id } = req.params
-      const deleted = await Movie.destroy({ where: { id } })
+      const deleted = await MovieModel.destroy({ where: { id } })
       if (!deleted) {
         return res.status(404).json({ message: '404 Movie not found' })
       }

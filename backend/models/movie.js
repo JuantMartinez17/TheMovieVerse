@@ -3,7 +3,6 @@ import p from 'picocolors'
 
 export class MovieModel {
   static async getAll({ genre } = {}) {
-    console.log('genre:', genre)
     const query = genre ? { where: { genre } } : {}
     const movies = await Movie.findAll(query)
     return { movies }
@@ -26,7 +25,8 @@ export class MovieModel {
     return { error: null, movieDetail }
   }
 
-  static async create ({ input }) {
+  static async create (input) {
+    console.log('Input data: ', input)
     const newMovie = await Movie.create(input)
     return newMovie
   }
@@ -46,10 +46,11 @@ export class MovieModel {
     }
   }
 
-  static async update ({ id, input }) {
+  static async update (id, input) {
     try {
-      const movie = await findByPk(id)
-      if (movie === null) {
+      movieId = Number(id)
+      const movie = await Movie.findByPk(movieId)
+      if (!movie) {
         return { error:{ code: 404, message: 'Movie not found' }, movie}
       }else {
         await movie.update(input)
