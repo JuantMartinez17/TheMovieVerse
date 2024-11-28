@@ -1,5 +1,5 @@
-import Movie from '../models/movie.js'
-
+import { MovieModel } from "../models/movie"
+//TODO: Implement the controller using new MovieModel
 export class MoviesController {
   static async getAll (req, res) {
     try {
