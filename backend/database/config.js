@@ -8,7 +8,7 @@ app.use(cors())
 app.use(bodyParser.json())
 
 const sequelize = new Sequelize({
-    storage: 'database.sqlite',
+    storage: process.env.DB_NAME,
     dialect: 'sqlite',
     define: {
         defaultScope: {
