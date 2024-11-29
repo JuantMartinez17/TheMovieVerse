@@ -48,4 +48,14 @@ export class UsersModel{
         await user.update(input)
         return { error: null }
     }
+
+    static async delete ({ userId }) {
+        const user = await User.findByPk(userId)
+        console.log('User:', user);
+        if (!user) {
+            return { error: { code: 404, message: 'User not found' } }
+        }
+        await user.destroy()
+        return { error: null }
+    }
 }

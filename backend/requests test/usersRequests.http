@@ -18,5 +18,5 @@ Content-Type: application/json
 {
     "username": "modifiedName"
 }
-###Eliminar una pelicula
-DELETE http://localhost:3000/users/2
+###Eliminar un usuario
+DELETE http://localhost:3000/users/23
