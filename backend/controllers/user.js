@@ -79,4 +79,52 @@ export class UsersController{
             res.status(500).json({ error: error.message })
         }
     }
+    /*static async login (req, res) {
+        const validation = validatePartialUser(req.body)
+        if (!validation.success) {
+            return res.status(400).json({ error: 'Invalid login data' })
+        }
+        try {
+            const { error, token } = await UsersModel.login({ credentials: validation.data })
+            if (error) {
+                return res.status(error.code).json({ error: error.message })
+            }
+            res.cookie('access_token', token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'strict',
+                maxAge: 3600000,
+            }).status(200).json({ message: 'Login successful', token })
+        }catch (error) {
+            console.error(p.red(`Error logging in: ${error.message}`))
+            res.status(500).json({ message: 'Internal server error' })
+        }
+    }*/
+        static async login(req, res) {
+            const validation = validatePartialUser(req.body);
+        
+            if (!validation.success) {
+                console.log('Validation failed:', validation.error);
+                return res.status(400).json({ error: 'Invalid login data' });
+            }
+        
+            try {
+                const { error, token } = await UsersModel.login({ credentials: validation.data });
+        
+                if (error) {
+                    console.log('Model error:', error);
+                    return res.status(error.code).json({ error: error.message });
+                }
+        
+                res.cookie('access_token', token, {
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV === 'production',
+                    sameSite: 'strict',
+                    maxAge: 3600000,
+                }).status(200).json({ message: 'Login successful', token });
+            } catch (error) {
+                console.error(`Error logging in: ${error.message}`);
+                res.status(500).json({ message: 'Internal server error' });
+            }
+        }
 }

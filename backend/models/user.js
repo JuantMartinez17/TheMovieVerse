@@ -1,5 +1,7 @@
 import { User } from '../database/config.js'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import p from 'picocolors'
 
 export class UsersModel{
     static async getAll() {
@@ -10,8 +12,6 @@ export class UsersModel{
         try {
           const userId = Number(id);
           const userDetail = await User.findByPk(userId);
-          console.log('User id:', id);
-          
           if (!userDetail) {
            return { error: { code: 404, message: 'User not found' }, user: null };
           }
@@ -58,4 +58,55 @@ export class UsersModel{
         await user.destroy()
         return { error: null }
     }
+
+    /*static async login ({ credentials }) {
+        try {
+            const { email, password } = credentials
+            const user = await User.findOne({ where: { email } })
+            if (!user) {
+                return { error: { code: 401, message: 'Invalid credentials' } }
+            }
+            const isPasswordValid = await bcrypt.compare(password, user.password)
+            if (!isPasswordValid) {
+                return { error: { code: 401, message: 'Invalid credentials' } }
+            }
+            const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' })
+            return { error: null, token }
+        }catch (error) {
+            console.error(p.red('Error during login', error))
+            return { error: { code: 500, message: 'Internal server error '}}
+        }
+    }*/
+        static async login({ credentials }) {
+            try {
+                const { email, password } = credentials;
+        
+                // Verificar si el usuario existe
+                const user = await User.findOne({ where: { email } });
+                if (!user) {
+                    console.log('User not found');
+                    return { error: { code: 401, message: 'Invalid credentials' } };
+                }
+        
+                // Comparar la contraseña
+                const isPasswordValid = await bcrypt.compare(password, user.password);
+                if (!isPasswordValid) {
+                    console.log('Password mismatch');
+                    return { error: { code: 401, message: 'Invalid credentials' } };
+                }
+        
+                // Generar token JWT
+                if (!process.env.JWT_SECRET) {
+                    console.error('JWT_SECRET is not defined');
+                    throw new Error('JWT_SECRET is not defined');
+                }
+        
+                const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+                console.log('Token generated successfully');
+                return { error: null, token };
+            } catch (error) {
+                console.error('Error during login:', error.message);
+                return { error: { code: 500, message: 'Internal server error' } };
+            }
+        }
 }
