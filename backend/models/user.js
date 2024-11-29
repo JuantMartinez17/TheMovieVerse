@@ -36,4 +36,16 @@ export class UsersModel{
         const user = await User.create({ ...input, password: passwordHash })
         return { error: null, user }
     }
+
+    static async update ({ id, input }) {
+        const user = await User.findByPk(id)
+        if (!user) {
+            return { error: { code: 404, message: 'User not found' } }
+        }
+        if (input.password) {
+            input.password = await bcrypt.hash(input.password, 10)
+        }
+        await user.update(input)
+        return { error: null }
+    }
 }

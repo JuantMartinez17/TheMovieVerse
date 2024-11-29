@@ -55,11 +55,11 @@ export class UsersController{
         }
         try { 
             const { id } = req.params
-            const input = req.body
-            const { error, user } = await UsersModel.update(id, input)
+            const { error } = await UsersModel.update({ id, input: validation.data })
             if (error) {
                 return res.status(500).json({ message: error.message })
             }
+            const user = await UsersModel.getById({ id })
             res.status(200).json(user)
         }catch (error) {
             console.error(p.red(`Error updating user: ${error.message}`))
