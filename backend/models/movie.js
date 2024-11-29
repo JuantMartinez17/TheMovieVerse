@@ -31,20 +31,14 @@ export class MovieModel {
     return newMovie
   }
 
-  static async delete ({ id }) {
-    const movie = await Movie.findByPk(id)
-    try {
-      const movie = await Movie.findOne({ where: { id } });
-      if(!movie) {
-        return { error: 'Movie not found' }
-      }
-      await movie.destroy()
-      return { error: null }
-    }catch(error) {
-      console.error(p.red('Error deleting movie: ', error))
-      return { error: error.message }
+  static async delete({ id }) {
+    const movie = await Movie.findByPk(id);
+    if (!movie) {
+      return { error: { code: 404, message: 'Movie not found' } };
     }
-  }
+    await movie.destroy();
+    return { error: null };
+}
   
   static async update(id, input) {
     try {

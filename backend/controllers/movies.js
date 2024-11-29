@@ -63,15 +63,16 @@ export class MoviesController {
     }
   }
 
-  static async delete (req, res) {
-    try {
+  static async delete(req, res){
+    try{
       const { id } = req.params
-      const deleted = await MovieModel.delete({ where: { id } })
-      if (!deleted) {
-        return res.status(404).json({ message: '404 Movie not found' })
+      const movieId = Number(id)
+      const { error } = await MovieModel.delete({ id: movieId })
+      if (error) {
+        return res.status(404).json({ message: error.message })
       }
-      res.json({ message: 'Movie deleted' })
-    } catch (error) {
+      res.status(204).json({ message: 'Movie deleted' })
+    }catch(error){
       res.status(500).json({ error: error.message })
     }
   }
