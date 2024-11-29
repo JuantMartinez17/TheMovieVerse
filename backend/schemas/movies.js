@@ -21,14 +21,11 @@ const movieSchema = zod.object({
     invalid_type_error: 'Movie poster must be an string',
     required_error: 'Movie poster is required'
   }).url(),
-  genre: zod.array(
-    zod.enum(['Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Horror', 'Science Fiction', 'Western']),
-    {
-      required_error: 'Movie genre is required',
-      invalid_type_error: 'Movie genre must be an array of enum Genre'
-    }
-  ),
-  rate: zod.number().min(0).max(5).default(0)
+  genre: zod.string({
+    invalid_type_error: 'Movie genre must be an string',
+    required_error: 'Movie genre is required'
+  }),
+  rate: zod.number().min(0).max(10).default(0)
 })
 
 export function validateMovie (object) {

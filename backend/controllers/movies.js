@@ -1,6 +1,6 @@
 import { MovieModel } from "../models/movie.js"
 import p from 'picocolors'
-//TODO: Implement the controller using new MovieModel
+
 export class MoviesController {
   static async getAll (req, res) {
     try {
@@ -58,8 +58,8 @@ export class MoviesController {
       }
       res.status(200).json(movie);
     } catch (error) {
-      console.error('Error in controller:', error.message); // Loguear el error en el controlador
-      res.status(500).json({ message: 'Internal server error' }); // Error genérico si algo falla
+      console.error('Error in controller:', error.message);
+      res.status(500).json({ message: 'Internal server error' });
     }
   }
 
