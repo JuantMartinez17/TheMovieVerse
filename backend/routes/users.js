@@ -8,3 +8,4 @@ usersRouter.post("/", UsersController.create);
 usersRouter.patch("/:id", UsersController.update);
 usersRouter.delete("/:id", UsersController.delete);
 usersRouter.post("/login", UsersController.login);
+usersRouter.post("/logout", UsersController.logout);

@@ -28,3 +28,6 @@ Content-Type: application/json
     "email": "juantomasm0@gmail.com",
     "password": "juanps17"
 }
+
+###Logout, se debe borrar la cookie con el token
+POST http://localhost:3000/users/logout
