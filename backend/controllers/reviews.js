@@ -15,7 +15,16 @@ export class ReviewsController {
     }
 
     static async getById(req, res) {
-
+        try {
+            const { id } = req.params
+            const review = await ReviewsModel.getById({ id })
+            if (review){
+                return res.json(review)
+            }
+            res.status(404).json({ message: '404 Review not found' })
+        }catch (error){
+            res.status(500).json({ error: error.message })
+        }
     }
 
     static async getByMovieId(req, res) {

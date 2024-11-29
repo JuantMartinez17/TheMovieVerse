@@ -2,7 +2,7 @@
 GET http://localhost:3000/reviews
 
 ### Recuperar una review por id
-GET http://localhost:3000/reviews/1
+GET http://localhost:3000/reviews/2
 
 ### Recuperar todas las reviews de una pelicula
 GET http://localhost:3000/reviews/movie/1

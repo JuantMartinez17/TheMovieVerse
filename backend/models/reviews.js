@@ -7,6 +7,23 @@ export class ReviewsModel{
         return reviews
     }
 
+    static async getById({ id }){
+        try {
+            const reviewDetail = await Review.findByPk(id)
+            if (reviewDetail === null){
+                return {
+                    error: { code: 404, message: 'Review not found' },
+                    reviewDetail: null
+                }
+            } else {
+                return { error: null, reviewDetail }
+            }
+        }catch (error) {
+            console.error(p.red('Error getting review by id: ', error))
+        }
+        return { error: null, reviewDetail }
+    }
+
     static async getByMovieId(movieId){
         try {
             const reviews = await Review.findAll({
