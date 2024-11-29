@@ -1,0 +1,22 @@
+### Recuperar todos los usuarios
+GET http://localhost:3000/user
+### Recuperar un usuario por id
+GET http://localhost:3000/user/21
+### Crear un usuario
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "username": "juantomasm0",
+    "email": "juantomasm0@gmail.com",
+    "password": "juanps17",
+}
+###Actualizar una pelicula
+PATCH http://localhost:3000/user/2
+Content-Type: application/json
+
+{
+    "username": "modifiedName"
+}
+###Eliminar una pelicula
+DELETE http://localhost:3000/user/2
