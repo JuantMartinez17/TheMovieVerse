@@ -6,7 +6,7 @@ import p from 'picocolors'
 export class UsersModel{
     static async getAll() {
         const users = await User.findAll()
-        return { users }
+        return users
     }
     static async getById({ id }) {
         try {

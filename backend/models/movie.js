@@ -5,7 +5,7 @@ export class MovieModel {
   static async getAll({ genre } = {}) {
     const query = genre ? { where: { genre } } : {}
     const movies = await Movie.findAll(query)
-    return { movies }
+    return movies
   }
 
   static async getById({ id }) {

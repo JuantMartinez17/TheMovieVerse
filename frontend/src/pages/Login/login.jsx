@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router'
 import './login.css'
 
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
+    const navigate = useNavigate()
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -25,7 +27,13 @@ const Login = () => {
             }
             console.log("Login succesfull", data)
             localStorage.setItem("TOKEN", data.token)
-            window.location.href = "/home"
+            localStorage.setItem('user', JSON.stringify(data.user));
+            const userRole = data.user.role
+            if (userRole === 'admin') {
+                navigate('/admin')
+            }else {
+                navigate('/home')
+            }
         }catch(e) {
             console.error("Error during login", e)
             setError("Internal server error")
