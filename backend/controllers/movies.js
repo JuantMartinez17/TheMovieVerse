@@ -54,7 +54,7 @@ export class MoviesController {
       const input = req.body;
       const { error, movie } = await MovieModel.update(id, input);
       if (error) {
-        return res.status(error.code || 500).json({ message: error.message });
+        return res.status(500).json({ message: error.message });
       }
       res.status(200).json(movie);
     } catch (error) {
