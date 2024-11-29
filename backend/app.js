@@ -1,6 +1,7 @@
 import express, { json } from 'express'
 import { corsMiddleware } from './middlewares/cors.js'
 import { moviesRouter } from './routes/movies.js'
+import { usersRouter } from './routes/users.js'
 const app = express()
 app.disable('x-powered-by')
 
@@ -12,6 +13,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/movies', moviesRouter)
+app.use('/users', usersRouter)
 
 const PORT = process.env.PORT ?? 3000
 
