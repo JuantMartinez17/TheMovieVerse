@@ -34,11 +34,14 @@ export class UsersController{
     }
     static async create (req, res) {
         const validation = validateUser(req.body)
-        if (!validation) {
-            return res.status(400).json({ error: 'Invalid user data' })
+        if (!validation.success) {
+            return res.status(400).json({ error: 'Invalid user data. Zod validation failed' })
         }
         try {
-            const user = await UsersModel.create(req.body)
+            const { error, user } = await UsersModel.create({ input: validation.data })
+            if (error) {
+                return res.status(error.code).json({ message: error.message })
+            }
             res.status(201).json(user)
         } catch (error) {
             console.error(p.red(`Error creating user: ${error.message}`))

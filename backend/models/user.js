@@ -1,4 +1,5 @@
 import { User } from '../database/config.js'
+import bcrypt from 'bcrypt'
 
 export class UsersModel{
     static async getAll() {
@@ -20,5 +21,19 @@ export class UsersModel{
           console.error('Error getting user by id:', error);
           return { error: { code: 500, message: 'Internal server error' }, user: null };
         }
+    }
+    
+    static async create ({ input }) {
+        const emailExists = await User.findOne({ where: { email: input.email } })
+        if (emailExists) {
+            return { error: { code: 400, message: 'Email already exists' }, user: null }
+        }
+        const usernameExists = await User.findOne({ where: { username: input.username } })
+        if (usernameExists) {
+            return { error: { code: 400, message: 'Username already exists' }, user: null }
+        }
+        const passwordHash = await bcrypt.hash(input.password, 10)
+        const user = await User.create({ ...input, password: passwordHash })
+        return { error: null, user }
     }
 }
