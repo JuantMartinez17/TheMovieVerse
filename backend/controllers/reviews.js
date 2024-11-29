@@ -79,11 +79,35 @@ export class ReviewsController {
     }
 
     static async update(req, res) {
-
-    }
+        try {
+            const { id } = req.params
+            const input = req.body
+            const validation = validatePartialReview(input)
+            if (!validation.success){
+                return res.status(400).json({ error: 'Invalid review data. Zod validation failed' })
+            }
+            const { error, review } = await ReviewsModel.update(id, validation.data)
+            if (error) {
+                return res.status(500).json({ message: error.message })
+            }
+            res.status(200).json(review)
+        }catch (error) {
+            console.error('Error in review controller:', error.message)
+            res.status(500).json({ message: 'Internal server error' }) 
+        }
+}
 
     static async delete(req, res) {
-
+        try {
+            const { id } = req.params
+            const deleted = await ReviewsModel.delete(id)
+            if (!deleted){
+                return res.status(404).json({ message: '404 Review not found' })
+            }
+            res.json({ message: 'Review deleted' })
+        }catch (error){
+            console.error('Error deleting review:', error.message)
+            res.status(500).json({ message: 'Internal server error' })
+        }
     }
-    
 }

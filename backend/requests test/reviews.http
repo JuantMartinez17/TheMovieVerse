@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ### Actualizar una review
-PATCH http://localhost:3000/reviews/1
+PATCH http://localhost:3000/reviews/41
 Content-Type: application/json
 
 {
@@ -30,4 +30,4 @@ Content-Type: application/json
 }
 
 ### Eliminar una review
-DELETE http://localhost:3000/reviews/1
+DELETE http://localhost:3000/reviews/41

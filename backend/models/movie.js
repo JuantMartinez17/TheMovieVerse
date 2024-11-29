@@ -45,6 +45,7 @@ export class MovieModel {
       return { error: error.message }
     }
   }
+  
   static async update(id, input) {
     try {
       const movieId = Number(id);

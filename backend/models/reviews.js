@@ -81,4 +81,34 @@ export class ReviewsModel{
             throw error
         }
     }
+
+    static async update (id, input){
+        try {
+            const reviewId = Number(id)
+            const review = await Review.findByPk(reviewId)
+            if (!review){
+                return { error: { code: 404, message: 'Review not found' }, review: null }
+            }
+            await review.update(input)
+            const updatedReview = await Review.findByPk(reviewId)
+            return { error: null, review: updatedReview }
+        }catch (error){
+            console.error('Error updating review:', error)
+            throw error
+        }
+    }
+
+    static async delete (id) {
+        try {
+            const review = await Review.findByPk(id)
+            if(!review) {
+                return { error: 'Review not found' }
+            }
+            await review.destroy()
+            return { error: null }
+        }catch(error) {
+            console.error(p.red('Error deleting review: ', error))
+            return { error: error.message }
+        }
+    }
 }
