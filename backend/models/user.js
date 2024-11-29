@@ -60,8 +60,8 @@ export class UsersModel{
     }
 
     static async login({ credentials }) {
-         try {
-            const { email, password } = credentials
+        try {
+            const { email, password } = credentials;
             const user = await User.findOne({ where: { email } });
             if (!user) {
                 console.log('User not found');
@@ -78,7 +78,7 @@ export class UsersModel{
             }
             const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
             console.log('Token generated successfully');
-            return { error: null, token };
+            return { error: null, token, user }; // returning user data
         } catch (error) {
             console.error('Error during login:', error.message);
             return { error: { code: 500, message: 'Internal server error' } };

@@ -90,7 +90,7 @@ export class UsersController{
             return res.status(400).json({ error: 'Invalid login data' });
         }
         try {
-            const { error, token } = await UsersModel.login({ credentials: validation.data });
+            const { error, token, user } = await UsersModel.login({ credentials: validation.data });
             if (error) {
                 console.log('Model error:', error);
                 return res.status(error.code).json({ error: error.message });
@@ -100,7 +100,16 @@ export class UsersController{
                 secure: process.env.NODE_ENV === 'production',
                 sameSite: 'strict',
                 maxAge: 3600000,
-            }).status(200).json({ message: 'Login successful', token });
+            }).status(200).json({
+                message: 'Login successful',
+                token,
+                user: {
+                    id: user.id,
+                    username: user.username,
+                    email: user.email,
+                    role: user.role
+                }
+            });
         } catch (error) {
             console.error(`Error logging in: ${error.message}`);
             res.status(500).json({ message: 'Internal server error' });
