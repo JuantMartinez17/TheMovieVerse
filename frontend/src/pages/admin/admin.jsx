@@ -34,7 +34,7 @@ const Admin = () => {
   const handleLogout = () => {
     localStorage.removeItem('TOKEN')
     localStorage.removeItem('user')
-    navigate('/landing')
+    navigate('/')
   }
 
   const handleTabChange = (tab) => {
