@@ -1,4 +1,5 @@
 import { ReviewsModel } from "../models/reviews.js"
+import { validateReview, validatePartialReview } from "../schemas/reviews.js"
 import p from 'picocolors'
 export class ReviewsController {
     static async getAll(req, res) {
@@ -60,7 +61,21 @@ export class ReviewsController {
     }
 
     static async create(req, res) {
-
+        console.log(req.body)
+        const validation = validateReview(req.body);
+        if (!validation.success) {
+            return res.status(400).json({ error: 'Invalid review data. Zod validation failed' })
+        }
+        try {
+            const { error, review } = await ReviewsModel.create({ input: validation.data })
+            if (error) {
+                return res.status(error.code).json({ message: error.message })
+            }
+            res.status(201).json(review)
+        }catch (error) {
+            console.error(p.red(`Error creating review: ${error.message}`))
+            res.status(500).json({ message: 'Internal server error' })
+        }
     }
 
     static async update(req, res) {

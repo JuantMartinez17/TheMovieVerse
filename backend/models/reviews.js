@@ -67,4 +67,18 @@ export class ReviewsModel{
             throw error
         }
     }
+
+    static async create({ input }) {
+        console.log(input)
+        try {
+            const review = await Review.create(input)
+            if (review){
+                return { error: null, review }
+            }
+            return { error: { code: 500, message: 'error creating the review' }, review: null }
+        }catch (error){
+            console.error(p.red(`Error creating review: ${error.message}`))
+            throw error
+        }
+    }
 }

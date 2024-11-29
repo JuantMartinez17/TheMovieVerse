@@ -1,6 +1,8 @@
 import zod from 'zod'
 
 const reviewsSchema = zod.object({
+    userId: zod.number(),
+    movieId: zod.number(),
     rating: zod.number({
         invalid_type_error: 'Rating must be a number',
     }).min(1).max(5),
