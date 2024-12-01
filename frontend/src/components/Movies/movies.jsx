@@ -105,7 +105,11 @@ const Movies = () => {
                             <td>{movie.year}</td>
                             <td>{movie.director}</td>
                             <td>{movie.duration}</td>
-                            <td>{movie.poster}</td>
+                            {movie.poster ? (
+                            <img src={movie.poster} alt={movie.title} style={{ maxWidth: '100px', height: 'auto' }} />
+                            ) : (
+                            <span>No disponible</span>
+                            )}
                             <td>{movie.genre}</td>
                             <td>{movie.rate}</td>
                             <td>
