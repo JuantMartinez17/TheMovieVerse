@@ -9,14 +9,14 @@ Content-Type: application/json
 {
     "username": "juantomasm0",
     "email": "juantomasm0@gmail.com",
-    "password": "juanps17"
+    "password": "juanps17",
 }
 ###Actualizar una pelicula
 PATCH http://localhost:3000/users/23
 Content-Type: application/json
 
 {
-    "username": "modifiedName"
+    "role": "admin"
 }
 ###Eliminar un usuario
 DELETE http://localhost:3000/users/23

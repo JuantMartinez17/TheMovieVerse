@@ -62,104 +62,146 @@ const MoviesForm = ({ id, handleCloseModal, movie, handleUpdateMovie }) => {
         }
     }
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-group">
-                <label>Titulo</label>
-                <Controller
-                    control={control}
-                    name="title"
-                    render={({ field }) => <input type="text" className={`form-control ${errors.title ? 'is-invalid' : ''}`} {...field} />}
-                />
-                <div className="invalid-feedback">{errors.title?.message}</div>
-            </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="needs-validation" noValidate>
+    <div className="row g-3">
+        <div className="col-md-6">
+            <label className="form-label">Título</label>
+            <Controller
+                control={control}
+                name="title"
+                render={({ field }) => (
+                    <input
+                        type="text"
+                        className={`form-control ${errors.title ? 'is-invalid' : ''}`}
+                        placeholder="Ingrese el título"
+                        {...field}
+                    />
+                )}
+            />
+            {errors.title && <div className="invalid-feedback">{errors.title.message}</div>}
+        </div>
 
-            <div className="form-group">
-                <label>Año</label>
-                <Controller
-                    control={control}
-                    name="year"
-                    render={({ field }) => <input type="number" className={`form-control ${errors.year ? 'is-invalid' : ''}`} {...field} />}
-                />
-                <div className="invalid-feedback">{errors.year?.message}</div>
-            </div>
+        <div className="col-md-6">
+            <label className="form-label">Año</label>
+            <Controller
+                control={control}
+                name="year"
+                render={({ field }) => (
+                    <input
+                        type="number"
+                        className={`form-control ${errors.year ? 'is-invalid' : ''}`}
+                        placeholder="Ingrese el año"
+                        {...field}
+                    />
+                )}
+            />
+            {errors.year && <div className="invalid-feedback">{errors.year.message}</div>}
+        </div>
 
-            <div className="form-group">
-                <label>Director</label>
-                <Controller
-                    control={control}
-                    name="director"
-                    render={({ field }) => <input type="text" className={`form-control ${errors.director ? 'is-invalid' : ''}`} {...field} />}
-                />
-                <div className="invalid-feedback">{errors.director?.message}</div>
-            </div>
+        <div className="col-md-6">
+            <label className="form-label">Director</label>
+            <Controller
+                control={control}
+                name="director"
+                render={({ field }) => (
+                    <input
+                        type="text"
+                        className={`form-control ${errors.director ? 'is-invalid' : ''}`}
+                        placeholder="Ingrese el nombre del director"
+                        {...field}
+                    />
+                )}
+            />
+            {errors.director && <div className="invalid-feedback">{errors.director.message}</div>}
+        </div>
 
-            <div className="form-group">
-                <label>Duration</label>
-                <Controller
-                    control={control}
-                    name="duration"
-                    render={({ field }) => <input type="number" className={`form-control ${errors.duration ? 'is-invalid' : ''}`} {...field} />}
-                />
-                <div className="invalid-feedback">{errors.duration?.message}</div>
-            </div>
+        <div className="col-md-6">
+            <label className="form-label">Duración (min)</label>
+            <Controller
+                control={control}
+                name="duration"
+                render={({ field }) => (
+                    <input
+                        type="number"
+                        className={`form-control ${errors.duration ? 'is-invalid' : ''}`}
+                        placeholder="Ingrese la duración"
+                        {...field}
+                    />
+                )}
+            />
+            {errors.duration && <div className="invalid-feedback">{errors.duration.message}</div>}
+        </div>
 
-            <div className="form-group">
-                <label>Poster</label>
-                <Controller
-                    control={control}
-                    name="poster"
-                    render={({ field }) => <input type="text" className={`form-control ${errors.poster ? 'is-invalid' : ''}`} {...field} />}
-                />
-                <div className="invalid-feedback">{errors.poster?.message}</div>
-            </div>
+        <div className="col-md-6">
+            <label className="form-label">Póster (URL)</label>
+            <Controller
+                control={control}
+                name="poster"
+                render={({ field }) => (
+                    <input
+                        type="text"
+                        className={`form-control ${errors.poster ? 'is-invalid' : ''}`}
+                        placeholder="Ingrese la URL del póster"
+                        {...field}
+                    />
+                )}
+            />
+            {errors.poster && <div className="invalid-feedback">{errors.poster.message}</div>}
+        </div>
 
-            <div className="form-group">
-                <label>Rate</label>
-                <Controller
-                    control={control}
-                    name="rate"
-                    render={({ field }) => <input type="number" className={`form-control ${errors.rate ? 'is-invalid' : ''}`} {...field} />}
-                />
-                <div className="invalid-feedback">{errors.rate?.message}</div>
-            </div>
+        <div className="col-md-6">
+            <label className="form-label">Calificación</label>
+            <Controller
+                control={control}
+                name="rate"
+                render={({ field }) => (
+                    <input
+                        type="number"
+                        className={`form-control ${errors.rate ? 'is-invalid' : ''}`}
+                        placeholder="Ingrese la calificación (1-10)"
+                        {...field}
+                    />
+                )}
+            />
+            {errors.rate && <div className="invalid-feedback">{errors.rate.message}</div>}
+        </div>
 
-            <div className="form-group">
-                <label>Genre</label>
-                <Controller
-                    control={control}
-                    name="genre"
-                    render={({ field }) => (
-                        <select className={`form-control form-select ${errors.genre ? 'is-invalid' : ''}`} {...field}>
-                            <option value="">Seleccione un genero</option>
-                            <option value="Action">Action</option>
-                            <option value="Adventure">Adventure</option>
-                            <option value="Animation">Animation</option>
-                            <option value="Biography">Biography</option>
-                            <option value="Comedy">Comedy</option>
-                            <option value="Crime">Crime</option>
-                            <option value="Documentary">Documentary</option>
-                            <option value="Drama">Drama</option>
-                            <option value="Family">Family</option>
-                            <option value="Fantasy">Fantasy</option>
-                            <option value="History">History</option>
-                            <option value="Horror">Horror</option>
-                            <option value="Musical">Musical</option>
-                            <option value="Mystery">Mystery</option>
-                            <option value="Romance">Romance</option>
-                            <option value="Sci-Fi">Sci-Fi</option>
-                            <option value="Superhero">Superhero</option>
-                            <option value="Thriller">Thriller</option>
-                            <option value="War">War</option>
-                            <option value="Western">Western</option>
-                        </select>
-                    )}
-                />
-                <div className="invalid-feedback">{errors.genre?.message}</div>
-            </div>
+        <div className="col-md-6">
+            <label className="form-label">Género</label>
+            <Controller
+                control={control}
+                name="genre"
+                render={({ field }) => (
+                    <select
+                        className={`form-select ${errors.genre ? 'is-invalid' : ''}`}
+                        {...field}
+                    >
+                        <option value="">Seleccione un género</option>
+                        <option value="Action">Action</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Romance">Romance</option>
+                    </select>
+                )}
+            />
+            {errors.genre && <div className="invalid-feedback">{errors.genre.message}</div>}
+        </div>
+    </div>
 
-            <br />
-            <button type="submit" className="btn btn-success">{id ? 'Actualizar' : 'Crear'}</button>
-        </form>
+    <div className="d-flex justify-content-between mt-3">
+        <button
+            type="button"
+            className="btn btn-secondary me-2"
+            onClick={handleCloseModal}
+        >
+            Cancelar
+        </button>
+        <button type="submit" className="btn btn-success">
+            {id ? 'Actualizar' : 'Crear'}
+        </button>
+    </div>
+</form>
     )
 }
 

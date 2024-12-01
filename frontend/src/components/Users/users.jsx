@@ -66,52 +66,83 @@ const Users = () => {
         );
     };
 
+    const handleAddUser = () => {
+        setIsFormOpen(true)
+        setUserToEdit(null)
+    }
+
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>Error al cargar usuarios</p>;
 
     return (
         <div className="container mt-4">
-            <h2>Usuarios</h2>
-            <button className="btn btn-success mb-3" onClick={() => setIsFormOpen(true)}>
-                Agregar Usuario
-            </button>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+                <h2 className="text-secondary">Usuarios</h2>
+                <button className="btn btn-success" onClick={handleAddUser}>
+                    <i className="bi bi-plus-lg me-1"></i> Agregar Usuario
+                </button>
+            </div>
 
             {isFormOpen && (
-                <UserForm 
-                    id={currentUserId} 
-                    handleCloseModal={handleCloseForm} 
-                    user={userToEdit} 
-                    handleUpdateUser={handleUpdateUser}
-                />
+                <div className="mb-4">
+                    <UserForm
+                        id={currentUserId}
+                        handleCloseModal={handleCloseForm}
+                        user={userToEdit}
+                        handleUpdateUser={handleUpdateUser}
+                    />
+                </div>
             )}
 
-            <table className="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Role</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map(user => (
-                        <tr key={user.userId}>
-                            <td>{user.username}</td>
-                            <td>{user.email}</td>
-                            <td>{user.password}</td>
-                            <td>{user.role}</td>
-                            <td>
-                                <button className="btn btn-primary btn-sm me-2" onClick={() => handleEdit(user.userId)}>Editar</button>
-                                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(user.userId)}>Eliminar</button>
-                            </td>
+            <div className="table-responsive">
+                <table className="table table-striped table-hover table-bordered align-middle">
+                    <thead className="table-dark">
+                        <tr>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col" style={{ width: '15%' }}>Password</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Acciones</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {users.length > 0 ? (
+                            users.map(user => (
+                                <tr key={user.userId}>
+                                    <td>{user.username}</td>
+                                    <td>{user.email}</td>
+                                    <td className="text-truncate text-nowrap" style={{ maxWidth: '150px' }}>
+                                        {user.password}
+                                    </td>
+                                    <td>{user.role}</td>
+                                    <td>
+                                        <button
+                                            className="btn btn-primary btn-sm me-2"
+                                            onClick={() => handleEdit(user.userId)}
+                                        >
+                                            <i className="bi bi-pencil-fill"></i> Editar
+                                        </button>
+                                        <button style={{ margin: '15px' }}
+                                            className="btn btn-danger btn-sm"
+                                            onClick={() => handleDelete(user.userId)}
+                                        >
+                                            <i className="bi bi-trash-fill"></i> Eliminar
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="5" className="text-center">
+                                    No hay usuarios disponibles.
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
         </div>
-    );
+    )
 };
 
 export default Users;

@@ -52,56 +52,94 @@ const UserForm = ({ id, handleCloseModal, user, handleUpdateUser }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-group">
-                <label>Nombre de usuario</label>
-                <Controller
-                    control={control}
-                    name="username"
-                    render={({ field }) => <input type="text" className={`form-control ${errors.username ? 'is-invalid' : ''}`} {...field} />}
-                />
-                <div className="invalid-feedback">{errors.username?.message}</div>
-            </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="needs-validation" noValidate>
+    <div className="row g-3">
+        <div className="col-md-6">
+            <label className="form-label">Nombre de usuario</label>
+            <Controller
+                control={control}
+                name="username"
+                render={({ field }) => (
+                    <input
+                        type="text"
+                        className={`form-control ${errors.username ? 'is-invalid' : ''}`}
+                        placeholder="Ingrese el nombre de usuario"
+                        {...field}
+                    />
+                )}
+            />
+            {errors.username && <div className="invalid-feedback">{errors.username.message}</div>}
+        </div>
 
-            <div className="form-group">
-                <label>Correo electrónico</label>
-                <Controller
-                    control={control}
-                    name="email"
-                    render={({ field }) => <input type="email" className={`form-control ${errors.email ? 'is-invalid' : ''}`} {...field} />}
-                />
-                <div className="invalid-feedback">{errors.email?.message}</div>
-            </div>
+        <div className="col-md-6">
+            <label className="form-label">Correo electrónico</label>
+            <Controller
+                control={control}
+                name="email"
+                render={({ field }) => (
+                    <input
+                        type="email"
+                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                        placeholder="Ingrese el correo electrónico"
+                        {...field}
+                    />
+                )}
+            />
+            {errors.email && <div className="invalid-feedback">{errors.email.message}</div>}
+        </div>
 
-            <div className="form-group">
-                <label>Contraseña</label>
-                <Controller
-                    control={control}
-                    name="password"
-                    render={({ field }) => <input type="password" className={`form-control ${errors.password ? 'is-invalid' : ''}`} {...field} />}
-                />
-                <div className="invalid-feedback">{errors.password?.message}</div>
-            </div>
+        <div className="col-md-6">
+            <label className="form-label">Contraseña</label>
+            <Controller
+                control={control}
+                name="password"
+                render={({ field }) => (
+                    <input
+                        type="password"
+                        className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                        placeholder="Ingrese la contraseña"
+                        {...field}
+                    />
+                )}
+            />
+            {errors.password && <div className="invalid-feedback">{errors.password.message}</div>}
+        </div>
 
-            <div className="form-group">
-                <label>Rol</label>
-                <Controller
-                    control={control}
-                    name="role"
-                    render={({ field }) => (
-                        <select className={`form-control form-select ${errors.role ? 'is-invalid' : ''}`} {...field}>
-                            <option value="">Seleccione un rol</option>
-                            <option value="admin">Administrador</option>
-                            <option value="user">Usuario</option>
-                        </select>
-                    )}
-                />
-                <div className="invalid-feedback">{errors.role?.message}</div>
-            </div>
+        <div className="col-md-6">
+            <label className="form-label">Rol</label>
+            <Controller
+                control={control}
+                name="role"
+                render={({ field }) => (
+                    <select
+                        className={`form-select ${errors.role ? 'is-invalid' : ''}`}
+                        {...field}
+                    >
+                        <option value="">Seleccione un rol</option>
+                        <option value="admin">Administrador</option>
+                        <option value="user">Usuario</option>
+                    </select>
+                )}
+            />
+            {errors.role && <div className="invalid-feedback">{errors.role.message}</div>}
+        </div>
+    </div>
 
-            <br />
-            <button type="submit" className="btn btn-success">{id ? 'Actualizar' : 'Crear'}</button>
-        </form>
+    <div className="d-flex justify-content-between mt-3">
+        <button
+            type="button"
+            className="btn btn-secondary me-2"
+            onClick={handleCloseModal}
+        >
+            Cancelar
+        </button>
+        <button type="submit" className="btn btn-success">
+            {id ? 'Actualizar' : 'Crear'}
+        </button>
+    </div>
+</form>
+
+
     );
 }
 

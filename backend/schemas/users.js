@@ -15,6 +15,10 @@ const userSchema = zod.object({
         invalid_type_error: 'User password must be an string',
         required_error: 'User password is required'
     }),
+    role: zod.string({
+        invalid_type_error: 'User role must be an string',
+        required_error: 'User role is required'
+    }).optional()
 })
 
 export function validateUser (object) {
