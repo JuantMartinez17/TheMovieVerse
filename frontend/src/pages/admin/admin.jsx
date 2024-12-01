@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import Users from '../../components/Users/users'
+import Movies from '../../components/Movies/movies'
 
 const Admin = () => {
 
@@ -28,8 +29,8 @@ const Admin = () => {
       </nav>
       <div>
         {activeTab === 'users' && <Users />}
-        {/* {activeTab === 'movies' && <Movies />}
-        {activeTab === 'reviews' && <Reviews />} */}
+        {activeTab === 'movies' && <Movies />}
+        {/*activeTab === 'reviews' && <Reviews />} */}
       </div>
     </div>
   );
