@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios'
+import './signup.css'
 import { useNavigate } from 'react-router'
+import { Link } from 'react-router'
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -37,61 +39,56 @@ const Signup = () => {
     }
 
     return (
-        <div className="container mt-5">
-      <h2 className="text-center mb-4">Sign Up</h2>
-      <form onSubmit={handleSubmit} className="card p-4 shadow">
-        <div className="mb-3">
-          <label htmlFor="username" className="form-label">
-            Username
-          </label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            className="form-control"
-            placeholder="Enter your username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            className="form-control"
-            placeholder="Enter your email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            className="form-control"
-            placeholder="Enter your password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary w-100">
-          Sign Up
-        </button>
-        {message && <p className="mt-3 text-center">{message}</p>}
-      </form>
-    </div>
-    )
+      <div className="signup-page">
+      <div className="form-container">
+          <p className="title">Sign Up</p>
+          <form onSubmit={handleSubmit} className="form">
+              <div className="input-group">
+                  <label htmlFor="username">Username</label>
+                  <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      placeholder="Enter your username"
+                      value={formData.username}
+                      onChange={handleChange}
+                      required
+                  />
+              </div>
+              <div className="input-group">
+                  <label htmlFor="email">Email</label>
+                  <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="Enter your email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                  />
+              </div>
+              <div className="input-group">
+                  <label htmlFor="password">Password</label>
+                  <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      placeholder="Enter your password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      required
+                  />
+              </div>
+              <button className="sign" type="submit">Sign Up</button>
+              {message && <p className="message">{message}</p>}
+          </form>
+          <p className="login-redirect">
+              Already have an account? 
+              <Link to="/login" className="login-link">Login</Link>
+          </p>
+      </div>
+  </div>
+  )
 }
 
 export default Signup

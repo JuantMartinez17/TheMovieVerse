@@ -5,6 +5,7 @@ import Admin from './pages/admin/admin.jsx'
 import Home from './pages/Home/home.jsx'
 import Signup from './pages/Signup/signup.jsx';
 import Movie from './pages/MovieDetail/movie.jsx';
+import Profile from './pages/Profile/profile.jsx';
 import { BrowserRouter as Router, Route, Routes } from "react-router";
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/admin' element={<Admin/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/movie/:id' element={<Movie/>}/>
+        <Route path='/profile' element={<Profile/>}/>
       </Routes>
     </Router>
   );

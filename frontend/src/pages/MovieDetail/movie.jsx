@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import NavBar from "../../components/NavBar";
-import "bootstrap/dist/css/bootstrap.min.css";
+import NavBar from "../../components/NavBar/NavBar";
+import MovieReviews from "../../components/MovieReviews/MovieReviews";
+import imdbLogo from '../../assets/images/imdb.png'
+import './movie.css'
 
 const Movie = () => {
   const { id } = useParams();
@@ -55,14 +57,13 @@ const Movie = () => {
     <div>
       <NavBar />
       <div className="container mt-4">
-        <h2>{movie.title}</h2>
+        <h2 className="movie-title">{movie.title}</h2>
         <div className="row">
           <div className="col-md-6">
             <img
               src={movie.poster}
               alt={movie.title}
-              className="img-fluid"
-              style={{ height: "400px", objectFit: "cover" }}
+              className="img-fluid movie-poster"
             />
           </div>
           <div className="col-md-6">
@@ -70,9 +71,20 @@ const Movie = () => {
             <p><strong>Director:</strong> {movie.director}</p>
             <p><strong>Duration:</strong> {movie.duration} minutes</p>
             <p><strong>Genre:</strong> {movie.genre}</p>
-            <p><strong>Rating:</strong> {movie.rate}</p>
+            <p className="rating">
+              <strong>Rating:</strong>
+              <img
+                src={imdbLogo}
+                alt="IMDb logo"
+                style={{ width: "20px", height: "20px", marginLeft: "8px" }}
+              />
+              {movie.rate}
+            </p>
           </div>
         </div>
+      </div>
+      <div>
+        <MovieReviews movieId={id} />
       </div>
     </div>
   );

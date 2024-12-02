@@ -78,7 +78,7 @@ export class UsersModel{
             }
             const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
             console.log('Token generated successfully');
-            return { error: null, token, user }; // returning user data
+            return { error: null, token, user };
         } catch (error) {
             console.error('Error during login:', error.message);
             return { error: { code: 500, message: 'Internal server error' } };

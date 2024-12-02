@@ -41,33 +41,42 @@ const Login = () => {
     }
 
     return (
-        <div className="Login">
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}>
-                <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
+        <div className="login-page">
+            <div className="form-container">
+            <p className="title">Login</p>
+            <form className="form" onSubmit={handleLogin}>
+                <div className="input-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
                 </div>
-                <div>
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
+                <div className="input-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
                 </div>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            <button type="submit">Login</button>
-        </form>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+                <button className="sign" type="submit">Sign in</button>
+            </form>
+            <p className="signup">Don't have an account?
+                <a rel="noopener noreferrer" href="/signup" className="">Sign up</a>
+            </p>
         </div>
+        </div> 
     )
 }
 

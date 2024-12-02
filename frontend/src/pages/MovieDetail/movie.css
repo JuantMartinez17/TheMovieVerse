@@ -1,0 +1,50 @@
+/* Página de detalles de la película */
+.movie-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .movie-poster {
+    height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .movie-details {
+    margin-top: 20px;
+  }
+  
+  .movie-details p {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 10px 0;
+  }
+  
+  .movie-details strong {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .rating {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .rating img {
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  
+  /* Recomendación para dar espacio y estilo a los comentarios/reseñas */
+  .movie-reviews {
+    margin-top: 40px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
