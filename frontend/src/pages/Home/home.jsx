@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "../../components/NavBar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/movies");
+        const response = await axios.get("http://localhost:3000/movies/:${id}");
         setMovies(response.data);
       } catch (error) {
         console.error("Error fetching movies:", error);
@@ -19,6 +21,10 @@ const HomePage = () => {
     fetchMovies();
   }, []);
 
+  const handleMovieClick = (id) => {
+    navigate(`/movie/${id}`);
+  };
+
   return (
     <div>
       <NavBar />
@@ -26,7 +32,12 @@ const HomePage = () => {
         <h2>My Movies</h2>
         <div className="row">
           {movies.map((movie) => (
-            <div key={movie.movieId} className="col-md-4 mb-4">
+            <div
+              key={movie.movieId}
+              className="col-md-4 mb-4"
+              onClick={() => handleMovieClick(movie.movieId)}
+              style={{ cursor: "pointer" }}
+            >
               <div className="card">
                 <img
                   src={movie.poster}
