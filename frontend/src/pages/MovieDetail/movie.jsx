@@ -55,38 +55,38 @@ const Movie = () => {
 
   return (
     <div>
-      <NavBar />
-      <div className="container mt-4">
-        <h2 className="movie-title">{movie.title}</h2>
-        <div className="row">
-          <div className="col-md-6">
-            <img
-              src={movie.poster}
-              alt={movie.title}
-              className="img-fluid movie-poster"
-            />
-          </div>
-          <div className="col-md-6">
-            <p><strong>Year:</strong> {movie.year}</p>
-            <p><strong>Director:</strong> {movie.director}</p>
-            <p><strong>Duration:</strong> {movie.duration} minutes</p>
-            <p><strong>Genre:</strong> {movie.genre}</p>
-            <p className="rating">
-              <strong>Rating:</strong>
-              <img
-                src={imdbLogo}
-                alt="IMDb logo"
-                style={{ width: "20px", height: "20px", marginLeft: "8px" }}
-              />
-              {movie.rate}
-            </p>
-          </div>
-        </div>
+  <NavBar />
+  <div className="container mt-4">
+    <h2 className="movie-title">{movie.title}</h2>
+    <div className="row">
+      <div className="col-md-6">
+        <img
+          src={movie.poster}
+          alt={movie.title}
+          className="img-fluid movie-poster"
+        />
       </div>
-      <div>
-        <MovieReviews movieId={id} />
+      <div className="col-md-6 movie-details">
+        <p><strong>Year:</strong> {movie.year}</p>
+        <p><strong>Director:</strong> {movie.director}</p>
+        <p><strong>Duration:</strong> {movie.duration} minutes</p>
+        <p><strong>Genre:</strong> {movie.genre}</p>
+        <p className="rating">
+          <strong>Rating:</strong>
+          <img
+            src={imdbLogo}
+            alt="IMDb logo"
+            className="imdb-logo"
+          />
+          <span>{movie.rate}</span>
+        </p>
       </div>
     </div>
+  </div>
+  <div>
+    <MovieReviews movieId={id} />
+  </div>
+</div>
   );
 };
 

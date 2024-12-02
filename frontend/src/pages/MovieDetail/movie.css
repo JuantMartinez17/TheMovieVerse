@@ -2,7 +2,7 @@
 .movie-title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #333;
+    color: #fff; /* Color blanco para un contraste adecuado con el fondo oscuro */
     margin-bottom: 20px;
   }
   
@@ -19,24 +19,33 @@
   
   .movie-details p {
     font-size: 1.1rem;
-    color: #555;
-    margin: 10px 0;
+    color: #ddd; /* Gris claro para el texto del contenido */
+    margin: 12px 0;
   }
   
   .movie-details strong {
     font-weight: bold;
-    color: #333;
+    color: #fff; /* Color blanco para las etiquetas */
   }
   
   .rating {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     display: flex;
     align-items: center;
+    margin-top: 5px;
   }
   
-  .rating img {
+  .rating img.imdb-logo {
+    width: 20px;
+    height: 20px;
     margin-left: 10px;
     vertical-align: middle;
+  }
+  
+  .rating span {
+    margin-left: 8px;
+    font-size: 1.2rem;
+    color: #ddd; /* Gris claro para el rating */
   }
   
   /* Recomendación para dar espacio y estilo a los comentarios/reseñas */
