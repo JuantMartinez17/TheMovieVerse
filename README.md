@@ -14,16 +14,16 @@
 9. [License](#license)
 
 ## Description
-Esta es una aplicación web desarrollada como parte de mi portafolio profesional, con el objetivo de demostrar mis habilidades en desarrollo web utilizando una arquitectura moderna y tecnologías populares.
+This is a web application developed as part of my professional portfolio, aiming to demonstrate my web development skills using modern architecture and popular technologies.
 
 ## Features
-- **Arquitectura Modular MVC**: La aplicación está estructurada utilizando el patrón MVC para mantener un código limpio, mantenible y escalable.
-- **Backend con Express.js y Node.js**: El backend está desarrollado con Express.js y Node.js, proporcionando una API RESTful para la comunicación con el frontend.
-- **Validaciones con Zod**: Utilizo Zod para realizar validaciones de datos en el backend, asegurando que la entrada del usuario sea correcta y consistente.
-- **Frontend con React.js**: El frontend está desarrollado con React.js, lo que permite una interfaz de usuario interactiva, modular y eficiente.
-- **Autenticación y Autorización (si aplica)**: Implementación de un sistema de autenticación básico utilizando tokens JWT para garantizar la seguridad de los usuarios.
-- **API RESTful**: La aplicación expone endpoints RESTful para interactuar con los recursos de la aplicación.
-- **Gestión de Errores**: Se han implementado controles adecuados para manejar errores en el backend y mejorar la experiencia del usuario.
+- **Modular MVC Architecture**: The application is structured using the MVC pattern to maintain clean, maintainable, and scalable code.
+- **Backend with Express.js and Node.js**: The backend is developed with Express.js and Node.js, providing a RESTful API for frontend communication.
+- **Validations with Zod**: I use Zod for data validations in the backend, ensuring user input is correct and consistent.
+- **Frontend with React.js**: The frontend is developed with React.js, allowing for an interactive, modular, and efficient user interface.
+- **Authentication and Authorization (if applicable)**: Implementation of a basic authentication system using JWT tokens to ensure user security.
+- **RESTful API**: The application exposes RESTful endpoints to interact with application resources.
+- **Error Management**: Proper controls have been implemented to handle errors in the backend and improve user experience.
 
 ## Technologies Used
 ### Backend
@@ -55,11 +55,64 @@ Esta es una aplicación web desarrollada como parte de mi portafolio profesional
 - @hookform/resolvers
 
 ## Installation
-### Requisitos previos
-Node.js y npm deben estar instalados en tu máquina. Puedes descargarlos desde [nodejs.org](https://nodejs.org/).
+### Prerequisites
+Node.js and npm must be installed on your machine. You can download them from [nodejs.org](https://nodejs.org/).
 
-### Instrucciones
-1. Clona este repositorio en tu máquina local:
+### Instructions
+1. Clone this repository to your local machine:
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
+   git clone https://github.com/your-username/your-repository.git
    ```
+2.Navigate to the project directory:
+   ```bash
+   cd your-repository
+   ```
+3.Install dependencies for both frontend and backend
+   **For the backend:**
+      ```bash
+      cd backend
+      npm install
+      ```
+   **For the frontend:**
+      ```bash
+      cd frontend
+      npm install
+      ```
+4.Start the backend server:
+   ```bash
+   cd backend
+   npm start
+   ```
+The backend server should be running at http://localhost:3000 (or the port you configured).
+5.Start the frontend server
+   ```bash
+   cd frontend
+   npm start
+   ```
+The frontend should be running at http://localhost:3006 (or the port you configured).
+Open your browser and go to http://localhost:3000 to see the application running.
+
+ ### Project Structure
+ /your-repository
+|-- /backend                # Backend (Node.js / Express.js)
+|   |-- /controllers        # Controllers
+|   |-- /models             # Data models (e.g., database connection)
+|   |-- /routes             # API routes
+|   |-- /services           # Business logic
+|   |-- /utils              # Utilities and configurations
+|   |-- app.js              # Entry point of the Express server
+|-- /frontend               # Frontend (React.js)
+|   |-- /components         # React components
+|   |-- /pages              # Application pages
+|   |-- /services           # Logic to interact with the backend
+|   |-- /styles             # CSS style files
+|   |-- App.js              # Entry point of the frontend
+|-- /README.md              # This file
+
+### Funcionalities
+**-** User Registration and Login (if applicable)
+**-** Resource Viewing: Users can view a list of items.
+**-** API Interaction: The frontend communicates with the backend to perform CRUD operations (Create, Read, Update, Delete).
+**-** Validations: Using Zod to ensure input data is correct and secure.
+
+   
