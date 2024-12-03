@@ -1,26 +1,22 @@
-/* Asegurándonos de que la Navbar ocupe todo el ancho */
 .navbar {
-    width: 100%;  /* Garantiza que la navbar ocupe todo el ancho disponible */
-    margin: 0;    /* Elimina márgenes */
-    padding: 0;   /* Elimina cualquier padding no necesario */
+    width: 100%; 
+    margin: 0; 
+    padding: 0;
   }
   
-  /* Aseguramos que la página ocupe todo el ancho */
   .profile-page {
-    background-color: rgba(17, 24, 39, 1); /* Fondo oscuro */
+    background-color: rgba(17, 24, 39, 1);
     min-height: 100vh;
     color: #ddd;
     padding-bottom: 50px;
-    margin: 0;  /* Elimina márgenes alrededor de la página */
+    margin: 0;
   }
   
-  /* Para los contenedores, aseguramos que se centren */
   .container {
-    margin: 0 auto; /* Centrado */
-    padding: 0 15px;  /* Espaciado lateral */
+    margin: 0 auto;
+    padding: 0 15px;
   }
   
-  /* Aseguramos que la card de perfil se vea correctamente */
   .profile-card {
     background-color: #2d2d3d;
     border-radius: 15px;
@@ -29,7 +25,6 @@
     max-width: 350px;
     margin-top: 30px;
     transition: all 0.3s ease;
-    /* Centrado horizontal */
     margin-left: auto;
     margin-right: auto;
   }
@@ -39,7 +34,6 @@
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
   }
   
-  /* Imagen de perfil */
   .profile-img-container {
     display: flex;
     justify-content: center;
@@ -55,7 +49,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   }
   
-  /* Detalles del perfil */
   .profile-details {
     text-align: center;
     padding: 20px;
@@ -72,8 +65,7 @@
     color: #bbb;
     margin-top: 10px;
   }
-  
-  /* Título del perfil */
+
   .profile-title {
     font-size: 2rem;
     font-weight: 600;

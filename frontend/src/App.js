@@ -1,6 +1,5 @@
 import './App.css';
 import Login from './pages/Login/login.jsx'
-import Landing from './pages/Landing/landing.jsx';
 import Admin from './pages/admin/admin.jsx'
 import Home from './pages/Home/home.jsx'
 import Signup from './pages/Signup/signup.jsx';
@@ -11,7 +10,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Landing/>}/>
+        <Route path='/' element={<Login/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/home' element={<Home/>}/>
         <Route path='/admin' element={<Admin/>}/>
