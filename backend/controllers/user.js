@@ -104,7 +104,7 @@ export class UsersController{
                 message: 'Login successful',
                 token,
                 user: {
-                    id: user.userId,
+                    userId: user.userId,
                     username: user.username,
                     email: user.email,
                     role: user.role

@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react"
-import axios from 'axios'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./UserReviews.css";
+import { FaTrashAlt } from 'react-icons/fa'
 
 const UserReviews = ({ userId }) => {
   const [reviews, setReviews] = useState([]);
@@ -42,28 +44,52 @@ const UserReviews = ({ userId }) => {
     ));
   };
 
+  const handleDelete = async (reviewId) => {
+    if (window.confirm("Are you sure you want to delete this review?")) {
+      try {
+        const response = await fetch(`http://localhost:3000/reviews/${reviewId}`, {
+          method: "DELETE",
+        })
+        if (!response.ok) {
+          throw new error("Error deleting review.");
+        }
+        setReviews(reviews.filter((review) => review.reviewId !== reviewId));
+      }catch (error) {
+        setError(error.message || "Error deleting review.");
+      }
+    }
+  }
+
   if (error) {
     return <p>{error}</p>;
   }
 
-        return (
-            <div className="mt-4">
-              <h4>User's Reviews</h4>
-              {reviews.length > 0 ? (
-                <ul className="list-group">
-                  {reviews.map((review) => (
-                    <li key={review.reviewId} className="list-group-item">
-                      <strong>Movie:</strong> {review.Movie.title} <br />
-                      <strong>Comment:</strong> {review.comment}{" "}
-                      <span className="badge bg-success">{review.rating}/5</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p>This user hasn't posted any reviews yet.</p>
-              )}
+  return (
+    <div className="mt-4 user-reviews">
+      <h4 className="reviews-title">User's Reviews</h4>
+      {reviews.length > 0 ? (
+        <div className="reviews-list">
+          {reviews.map((review) => (
+            <div key={review.reviewId} className="review-box">
+              <button
+                className="delete-button"
+                onClick={() => handleDelete(review.reviewId)}
+              >
+                <FaTrashAlt />
+              </button>
+              <div className="review-header">
+                <strong>Movie:</strong> {review.Movie.title}
+                <span className="review-rating">{renderStars(review.rating)}</span>
+              </div>
+              <p className="review-comment">{review.comment}</p>
             </div>
-          );
-}
+          ))}
+        </div>
+      ) : (
+        <p>This user hasn't posted any reviews yet.</p>
+      )}
+    </div>
+  );
+};
 
-export default UserReviews
+export default UserReviews;
