@@ -109,10 +109,11 @@ Open your browser and go to http://localhost:3000 to see the application running
    |-- /README.md              # This file
 ```
 
-### Funcionalities
-**-** User Registration and Login (if applicable)
-**-** Resource Viewing: Users can view a list of items.
-**-** API Interaction: The frontend communicates with the backend to perform CRUD operations (Create, Read, Update, Delete).
-**-** Validations: Using Zod to ensure input data is correct and secure.
+## Functionalities
+- **User Registration and Login (if applicable)**
+- **Resource Viewing**: Users can view a list of items (e.g., products, movies, etc.).
+- **API Interaction**: The frontend communicates with the backend to perform CRUD operations (Create, Read, Update, Delete).
+- **Pagination and Search**: Implementation of pagination and search functionalities.
+- **Validations**: Using Zod to ensure input data is correct and secure.
 
    
