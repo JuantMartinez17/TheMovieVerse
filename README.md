@@ -8,8 +8,6 @@
 5. [Usage](#usage)
 6. [Project Structure](#project-structure)
 7. [Functionalities](#functionalities)
-8. [Contributing](#contributing)
-9. [License](#license)
 
 ## Description
 This is a web application developed as part of my professional portfolio, aiming to demonstrate my web development skills using modern architecture and popular technologies.
