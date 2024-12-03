@@ -93,21 +93,23 @@ The frontend should be running at http://localhost:3006 (or the port you configu
 Open your browser and go to http://localhost:3000 to see the application running.
 
  ### Project Structure
- /your-repository
-|-- /backend                # Backend (Node.js / Express.js)
-|   |-- /controllers        # Controllers
-|   |-- /models             # Data models (e.g., database connection)
-|   |-- /routes             # API routes
-|   |-- /services           # Business logic
-|   |-- /utils              # Utilities and configurations
-|   |-- app.js              # Entry point of the Express server
-|-- /frontend               # Frontend (React.js)
-|   |-- /components         # React components
-|   |-- /pages              # Application pages
-|   |-- /services           # Logic to interact with the backend
-|   |-- /styles             # CSS style files
-|   |-- App.js              # Entry point of the frontend
-|-- /README.md              # This file
+ ```bash
+    /your-repository
+   |-- /backend                # Backend (Node.js / Express.js)
+   |   |-- /controllers        # Controllers
+   |   |-- /models             # Data models (e.g., database connection)
+   |   |-- /routes             # API routes
+   |   |-- /services           # Business logic
+   |   |-- /utils              # Utilities and configurations
+   |   |-- app.js              # Entry point of the Express server
+   |-- /frontend               # Frontend (React.js)
+   |   |-- /components         # React components
+   |   |-- /pages              # Application pages
+   |   |-- /services           # Logic to interact with the backend
+   |   |-- /styles             # CSS style files
+   |   |-- App.js              # Entry point of the frontend
+   |-- /README.md              # This file
+```
 
 ### Funcionalities
 **-** User Registration and Login (if applicable)
