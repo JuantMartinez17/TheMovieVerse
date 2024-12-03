@@ -1,6 +1,4 @@
-# Web Application - Portfolio Project
-
-![Project Logo](path/to/logo.png)
+# Web Application - Portfolio Project - The MovieVerse
 
 ## Table of Contents
 1. [Description](#description)
