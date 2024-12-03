@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import '../MovieReviews/MovieReviews.css';
+import React, { useState, useEffect } from "react"
+import axios from 'axios'
 
 const UserReviews = ({ userId }) => {
   const [reviews, setReviews] = useState([]);
@@ -47,26 +46,24 @@ const UserReviews = ({ userId }) => {
     return <p>{error}</p>;
   }
 
-  return (
-    <div className="mt-4 user-reviews">
-      <h4 className="reviews-title">Your reviews</h4>
-      {reviews.length > 0 ? (
-        <div className="reviews-list">
-          {reviews.map((review) => (
-            <div key={review.reviewId} className="review-box">
-              <div className="review-header">
-                <strong>{review.Movie.title}</strong>
-                <span className="review-rating">{renderStars(review.rating)}</span>
-              </div>
-              <p className="review-comment">{review.comment}</p>
+        return (
+            <div className="mt-4">
+              <h4>User's Reviews</h4>
+              {reviews.length > 0 ? (
+                <ul className="list-group">
+                  {reviews.map((review) => (
+                    <li key={review.reviewId} className="list-group-item">
+                      <strong>Movie:</strong> {review.Movie.title} <br />
+                      <strong>Comment:</strong> {review.comment}{" "}
+                      <span className="badge bg-success">{review.rating}/5</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>This user hasn't posted any reviews yet.</p>
+              )}
             </div>
-          ))}
-        </div>
-      ) : (
-        <p>This user hasn't posted any reviews yet.</p>
-      )}
-    </div>
-  );
-};
+          );
+}
 
-export default UserReviews;
+export default UserReviews
