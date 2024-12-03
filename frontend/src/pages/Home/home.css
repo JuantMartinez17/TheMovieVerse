@@ -1,68 +1,67 @@
 /* Página de inicio */
 .homepage-container {
-    padding: 20px;
-  }
-  
-  .title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #fff; /* Blanco para el título */
-    margin-bottom: 20px;
-  }
-  
-  /* Lista de películas */
-  .movie-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-  }
-  
-  /* Tarjetas de películas */
-  .movie-card {
-    width: calc(33.33% - 20px);
-    cursor: pointer;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #222; /* Fondo oscuro para las tarjetas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-  }
-  
-  .movie-card:hover {
-    transform: translateY(-5px); /* Efecto de hover */
-  }
-  
-  .card-content {
-    position: relative;
-    width: 100%;
-  }
-  
-  .card-img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    transition: opacity 0.3s ease;
-  }
-  
-  .card-body {
-    padding: 15px;
-    background-color: #333; /* Fondo oscuro */
-    color: #fff; /* Texto blanco */
-    font-size: 1rem;
-  }
-  
-  .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #fff; /* Título blanco */
-  }
-  
-  .card-text {
-    color: #bbb; /* Color gris para el texto de la descripción */
-  }
-  
-  .card-text strong {
-    color: #e81cff; /* Color para las calificaciones */
-  }
-  
+  padding: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff; /* Blanco para el título */
+  margin-bottom: 20px;
+}
+
+/* Lista de películas */
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+/* Tarjetas de películas */
+.movie-card {
+  width: calc(33.33% - 20px);
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #222; /* Fondo oscuro para las tarjetas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px); /* Efecto de hover */
+}
+
+.card-content {
+  position: relative;
+  width: 100%;
+}
+
+.card-img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.card-body {
+  padding: 15px;
+  background-color: #333; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+  font-size: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #fff; /* Título blanco */
+}
+
+.card-text {
+  color: #bbb; /* Color gris para el texto de la descripción */
+}
+
+.card-text strong {
+  color: #e81cff; /* Color para las calificaciones */
+}

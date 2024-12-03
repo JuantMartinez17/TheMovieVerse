@@ -4,6 +4,7 @@ import axios from 'axios'
 import './signup.css'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router'
+import Logo from '../../assets/images/logo.png'
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -39,55 +40,63 @@ const Signup = () => {
     }
 
     return (
-      <div className="signup-page">
-      <div className="form-container">
+        <div className="signup-page">
+        <div className="header-signup">
+          <img src={Logo} alt="MovieVerse Logo" className="logo" />
+          <div className="text-container">
+            <h1 className="welcome-title">Join the MovieVerse!</h1>
+            <p className="subtitle">Discover, review, and share your favorite movies.</p>
+          </div>
+        </div>
+        <div className="form-container">
           <p className="title">Sign Up</p>
           <form onSubmit={handleSubmit} className="form">
-              <div className="input-group">
-                  <label htmlFor="username">Username</label>
-                  <input
-                      type="text"
-                      id="username"
-                      name="username"
-                      placeholder="Enter your username"
-                      value={formData.username}
-                      onChange={handleChange}
-                      required
-                  />
-              </div>
-              <div className="input-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder="Enter your email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                  />
-              </div>
-              <div className="input-group">
-                  <label htmlFor="password">Password</label>
-                  <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      placeholder="Enter your password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      required
-                  />
-              </div>
-              <button className="sign" type="submit">Sign Up</button>
-              {message && <p className="message">{message}</p>}
+            <div className="input-group">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                value={formData.username}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button className="sign" type="submit">Sign Up</button>
+            {message && <p className="message">{message}</p>}
           </form>
           <p className="login-redirect">
-              Already have an account? 
-              <Link to="/login" className="login-link">Login</Link>
+            Already have an account? 
+            <Link to="/login" className="login-link">Login</Link>
           </p>
+        </div>
       </div>
-  </div>
+      
   )
 }
 

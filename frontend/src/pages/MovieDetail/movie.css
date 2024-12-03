@@ -1,8 +1,7 @@
-/* Página de detalles de la película */
 .movie-title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #fff; /* Color blanco para un contraste adecuado con el fondo oscuro */
+    color: #fff;
     margin-bottom: 20px;
   }
   
@@ -19,13 +18,13 @@
   
   .movie-details p {
     font-size: 1.1rem;
-    color: #ddd; /* Gris claro para el texto del contenido */
+    color: #ddd;
     margin: 12px 0;
   }
   
   .movie-details strong {
     font-weight: bold;
-    color: #fff; /* Color blanco para las etiquetas */
+    color: #fff;
   }
   
   .rating {
@@ -45,13 +44,12 @@
   .rating span {
     margin-left: 8px;
     font-size: 1.2rem;
-    color: #ddd; /* Gris claro para el rating */
+    color: #ddd;
   }
   
-  /* Recomendación para dar espacio y estilo a los comentarios/reseñas */
   .movie-reviews {
     margin-top: 40px;
-    background-color: #f9f9f9;
+    background-color: rgba(17, 24, 39, 1);;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

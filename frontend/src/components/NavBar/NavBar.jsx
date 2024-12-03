@@ -1,6 +1,7 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 import "./NavBar.css"
+import Logo from '../../assets/images/logo.png'
 
 const NavBar = () => {
     const navigate = useNavigate()
@@ -20,7 +21,7 @@ const NavBar = () => {
             <div className="container">
                 <a className="navbar-brand d-flex align-items-center" href="/home">
                     <img
-                        src="/logo.png"
+                        src={Logo}
                         alt=""
                         style={{ width: "40px", height: "40px", marginRight: "10px" }}
                     />
