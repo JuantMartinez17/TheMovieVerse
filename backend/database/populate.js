@@ -34,7 +34,7 @@ export async function populateDatabase() {
         ];
         const movies = [
             { title: "The Dark Knight", year: 2008, director: "Christopher Nolan", duration: 152, poster: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg", genre: "Action", rate: 9.0 },
-            { title: "Inception", year: 2010, director: "Christopher Nolan", duration: 148, poster: "https://image.tmdb.org/t/p/w500/8tNX8s3j1O0eqilOQkuroRLyOZA.jpg", genre: "Sci-Fi", rate: 8.8 },
+            { title: "Inception", year: 2010, director: "Christopher Nolan", duration: 148, poster: "https://i.ebayimg.com/images/g/LlUAAOSwm8VUwoRL/s-l1600.webp", genre: "Sci-Fi", rate: 8.8 },
             { title: "Forrest Gump", year: 1994, director: "Robert Zemeckis", duration: 142, poster: "https://image.tmdb.org/t/p/w500/h5J4W4veyxMXDMjeNxZI46TsHOb.jpg", genre: "Drama", rate: 8.8 },
             { title: "The Shawshank Redemption", year: 1994, director: "Frank Darabont", duration: 142, poster: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg", genre: "Drama", rate: 9.3 },
             { title: "Pulp Fiction", year: 1994, director: "Quentin Tarantino", duration: 154, poster: "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg", genre: "Crime", rate: 8.9 },
