@@ -3,6 +3,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import "./home.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import imdbLogo from "../../assets/images/imdb.png";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -46,7 +47,15 @@ const HomePage = () => {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{movie.title}</h5>
-                  <p className="card-text">Rating: {movie.rate}</p>
+                  <div className="rating-container">
+                  <p className="card-text">Rating:
+                    <span className="movie-rate">{movie.rate}</span></p>
+                  <img
+                      src={imdbLogo}
+                      alt="IMDb logo"
+                      className="imdb-logo"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

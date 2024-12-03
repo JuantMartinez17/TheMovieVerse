@@ -108,90 +108,92 @@ const Movie = () => {
 
   return (
     <div>
-      <NavBar />
-      <div className="container mt-4">
-        <h2 className="movie-title">{movie.title}</h2>
-        <div className="row">
-          <div className="col-md-6">
-            <img
-              src={movie.poster}
-              alt={movie.title}
-              className="img-fluid movie-poster"
+  <NavBar />
+  <div className="container mt-4">
+    <h2 className="movie-title">{movie.title}</h2>
+    <div className="row">
+      <div className="col-md-6">
+        <img
+          src={movie.poster}
+          alt={movie.title}
+          className="img-fluid movie-poster"
+        />
+      </div>
+      <div className="col-md-6 movie-details">
+        <p><strong>Year:</strong> {movie.year}</p>
+        <p><strong>Director:</strong> {movie.director}</p>
+        <p><strong>Duration:</strong> {movie.duration} minutes</p>
+        <p><strong>Genre:</strong> {movie.genre}</p>
+        <p className="rating">
+          <strong>Rating:</strong>
+          <img
+            src={imdbLogo}
+            alt="IMDb logo"
+            className="imdb-logo"
+          />
+          <span>{movie.rate}</span>
+        </p>
+      </div>
+    </div>
+    <div class="add-review-btn-container">
+      <button 
+        class="btn btn-primary mt-4 add-review-btn"
+        onClick={handleReviewModalOpen}
+      >
+        <FaPen /> Add a Review
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <MovieReviews movieId={id} />
+  </div>
+
+  {isReviewModalOpen && (
+    <div className="modal">
+      <div className="modal-content">
+        <h3>Write a Review</h3>
+        <form onSubmit={handleReviewSubmit}>
+          <div className="form-group">
+            <label htmlFor="rating">Rating</label>
+            <input
+              type="number"
+              id="rating"
+              name="rating"
+              value={reviewData.rating}
+              min="1"
+              max="5"
+              step="0.5"
+              onChange={handleReviewChange}
+              required
             />
           </div>
-          <div className="col-md-6 movie-details">
-            <p><strong>Year:</strong> {movie.year}</p>
-            <p><strong>Director:</strong> {movie.director}</p>
-            <p><strong>Duration:</strong> {movie.duration} minutes</p>
-            <p><strong>Genre:</strong> {movie.genre}</p>
-            <p className="rating">
-              <strong>Rating:</strong>
-              <img
-                src={imdbLogo}
-                alt="IMDb logo"
-                className="imdb-logo"
-              />
-              <span>{movie.rate}</span>
-            </p>
+          <div className="form-group">
+            <label htmlFor="comment">Comment</label>
+            <textarea
+              id="comment"
+              name="comment"
+              value={reviewData.comment}
+              onChange={handleReviewChange}
+              required
+            ></textarea>
           </div>
-        </div>
-
-        <button 
-          className="btn btn-primary mt-4"
-          onClick={handleReviewModalOpen}
-        >
-          <FaPen /> Add a Review
-        </button>
-      </div>
-
-      <div>
-        <MovieReviews movieId={id} />
-      </div>
-
-      {isReviewModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3>Write a Review</h3>
-            <form onSubmit={handleReviewSubmit}>
-              <div className="form-group">
-                <label htmlFor="rating">Rating</label>
-                <input
-                  type="number"
-                  id="rating"
-                  name="rating"
-                  value={reviewData.rating}
-                  min="1"
-                  max="5"
-                  step="0.1"
-                  onChange={handleReviewChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="comment">Comment</label>
-                <textarea
-                  id="comment"
-                  name="comment"
-                  value={reviewData.comment}
-                  onChange={handleReviewChange}
-                  required
-                ></textarea>
-              </div>
-              <div className="form-actions">
-                <button type="submit" className="submit-button">Submit Review</button>
-                <button
-                  type="button"
-                  className="cancel-button"
-                  onClick={handleReviewModalClose}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
+          <div className="form-actions">
+            <button type="submit" className="submit-button">Submit Review</button>
+            <button
+              type="button"
+              className="cancel-button"
+              onClick={handleReviewModalClose}
+            >
+              Cancel
+            </button>
           </div>
-        </div>
-      )}
+        </form>
+      </div>
     </div>
+  )}
+</div>
+
   );
 };
 
