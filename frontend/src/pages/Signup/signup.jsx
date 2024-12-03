@@ -4,6 +4,7 @@ import axios from 'axios'
 import './signup.css'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router'
+import Logo from '../../assets/images/logo.png'
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -40,6 +41,13 @@ const Signup = () => {
 
     return (
       <div className="signup-page">
+        <div className="signup-header">
+            <img src={Logo} alt="" className="logo-img"/>
+            <div className="signup-header-titles">
+            <h1 className="welcome-signup">Join the MovieVerse!</h1>
+            <p className="signup-subtitle">Review, discover and share your favorite movies</p>
+            </div>
+        </div>
       <div className="form-container">
           <p className="title">Sign Up</p>
           <form onSubmit={handleSubmit} className="form">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import NavBar from "../../components/NavBar/NavBar"
 import UserReviews from "../../components/UserReviews/UserReviews.jsx"
-
+import './profile.css'
 const Profile = () => {
     const [user, setUser] = useState("") 
     
@@ -25,19 +25,21 @@ const Profile = () => {
 
     
     return (
-    <div>
+      <div className="profile-page">
       <NavBar />
       <div className="container mt-4">
-        <h2>Profile</h2>
-        <div className="card mx-auto" style={{ width: "18rem" }}>
-          <img
-            src="https://via.placeholder.com/150"
-            alt="Profile"
-            className="card-img-top"
-          />
-          <div className="card-body">
-            <h5 className="card-title">Welcome, {user.username}!</h5>
-            <p className="card-text">This is your profile page.</p>
+        <h2 className="profile-title">Profile</h2>
+        <div className="profile-card mx-auto">
+          <div className="profile-img-container">
+            <img
+              src="https://via.placeholder.com/150"
+              alt="Profile"
+              className="profile-img"
+            />
+          </div>
+          <div className="profile-details">
+            <h5 className="profile-username">Welcome, {user.username}!</h5>
+            <p className="profile-description">This is your profile page.</p>
           </div>
         </div>
       </div>

@@ -43,6 +43,10 @@ const Login = () => {
 
     return (
         <div className="login-page">
+            <div className="header-login">
+                <img src={Logo} alt="" className="logo-img"/>                
+                <h1 className="welcome-login" >Welcome to the MovieVerse!</h1>
+            </div>
             <div className="form-container">
             <p className="title">Login</p>
             <form className="form" onSubmit={handleLogin}>
