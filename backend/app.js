@@ -5,6 +5,8 @@ import { usersRouter } from './routes/users.js'
 import { reviewsRouter } from './routes/reviews.js'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
+import { sequelize } from './database/config.js'
+import {  populateDatabase } from './database/populate.js'
 dotenv.config()
 const app = express()
 app.disable('x-powered-by')

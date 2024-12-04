@@ -1,6 +1,4 @@
 import { DataTypes, Sequelize} from 'sequelize'
-import { populateDatabase } from './populate.js'
-import p from 'picocolors'
 import express from 'express'
 import { corsMiddleware } from '../middlewares/cors.js'
 const app = express()
@@ -144,4 +142,5 @@ export {
     User,
     Movie,
     Review,
+    sequelize,
 }
