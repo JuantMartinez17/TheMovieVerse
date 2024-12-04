@@ -5,7 +5,7 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:3006',
   'http://localhost:3007',
   'http://localhost:8080',
-  process.env.PORT,
+  'https://programacionwebii-production.up.railway.app/',
 ]
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({
   origin: (origin, callback) => {

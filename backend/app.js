@@ -23,6 +23,13 @@ app.use('/reviews', reviewsRouter)
 
 const PORT = process.env.PORT || 3000
 
-/*app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
-})*/
+sequelize.sync()
+    .then(() => {
+        app.listen(process.env.PORT, () => {
+            console.log(`Server is running on port ${PORT}`)
+            populateDatabase()
+        })
+    })
+    .catch((error) => {
+        console.error(p.red('Error connecting to the database: ', error))
+    })

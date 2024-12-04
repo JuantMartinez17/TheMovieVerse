@@ -140,17 +140,6 @@ Review.belongsTo(Movie, {
     foreignKey: 'movieId',
 })
 
-sequelize.sync()
-    .then(() => {
-        app.listen(process.env.PORT, () => {
-            console.log(`Server is running on port ${PORT}`)
-            populateDatabase()
-        })
-    })
-    .catch((error) => {
-        console.error(p.red('Error connecting to the database: ', error))
-    })
-
 export {
     User,
     Movie,
