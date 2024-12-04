@@ -4,7 +4,7 @@ import p from 'picocolors'
 import express from 'express'
 import { corsMiddleware } from '../middlewares/cors.js'
 const app = express()
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3001
 app.use(corsMiddleware())
 app.use(express.json())
 
@@ -143,8 +143,8 @@ Review.belongsTo(Movie, {
 sequelize.sync()
     .then(() => {
         app.listen(PORT, () => {
-            populateDatabase()
             console.log(`Server is running on port ${PORT}`)
+            populateDatabase()
         })
     })
     .catch((error) => {
