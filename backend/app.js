@@ -23,6 +23,6 @@ app.use('/reviews', reviewsRouter)
 
 const PORT = process.env.PORT || 3000
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })
