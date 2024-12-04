@@ -33,7 +33,7 @@ const Signup = () => {
             })
             setMessage("User registered succesfully")
             console.log(response.data)
-            navigate('/home')
+            navigate('/login')
         }catch (error) {
             setMessage("Error registering user: " + error.message)
         }

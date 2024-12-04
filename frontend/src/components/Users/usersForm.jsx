@@ -39,7 +39,7 @@ const UserForm = ({ id, handleCloseModal, user, handleUpdateUser }) => {
                     console.error('Error al actualizar el usuario', error);
                 });
         } else {
-            axios.post('http://localhost:3000/users', data)
+            axios.post('https://programacionwebii-production.up.railway.app/users', data)
                 .then((response) => {
                     handleUpdateUser(response.data);
                     handleCloseModal();
