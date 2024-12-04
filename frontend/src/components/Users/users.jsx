@@ -12,7 +12,7 @@ const Users = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch('http://localhost:3000/users', {
+                const response = await fetch('https://programacionwebii-production.up.railway.app/users', {
                     method: "GET"
                 });
                 if (!response.ok) {
@@ -39,7 +39,7 @@ const Users = () => {
     const handleDelete = async (userId) => {
         if (window.confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
             try {
-                const response = await fetch(`http://localhost:3000/users/${userId}`, {
+                const response = await fetch(`https://programacionwebii-production.up.railway.app/users/${userId}`, {
                     method: "DELETE"
                 });
                 if (!response.ok) {

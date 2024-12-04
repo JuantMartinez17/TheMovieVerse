@@ -29,7 +29,7 @@ const UserForm = ({ id, handleCloseModal, user, handleUpdateUser }) => {
 
     const onSubmit = (data) => {
         if (id) {
-            axios.patch(`http://localhost:3000/users/${id}`, data)
+            axios.patch(`https://programacionwebii-production.up.railway.app/users/${id}`, data)
                 .then((response) => {
                     handleUpdateUser(response.data);
                     handleCloseModal();

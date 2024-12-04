@@ -10,7 +10,7 @@ const MovieReviews = ({ movieId }) => {
     const fetchReviews = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/reviews/movie/${movieId}`
+          `https://programacionwebii-production.up.railway.app/reviews/movie/${movieId}`
         );
         setReviews(response.data);
       } catch (error) {

@@ -10,7 +10,7 @@ const UserReviews = ({ userId }) => {
   useEffect(() => {
     const fetchUserReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/reviews/user/${userId}`);
+        const response = await axios.get(`https://programacionwebii-production.up.railway.app/reviews/user/${userId}`);
         setReviews(response.data);
       } catch (error) {
         console.error("Error fetching reviews:", error);

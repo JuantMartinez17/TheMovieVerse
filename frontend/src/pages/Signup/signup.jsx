@@ -26,7 +26,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post("http://localhost:3000/users", formData, {
+            const response = await axios.post("https://programacionwebii-production.up.railway.app/users", formData, {
                 headers: {
                     "Content-Type" : "application/json"
                 }

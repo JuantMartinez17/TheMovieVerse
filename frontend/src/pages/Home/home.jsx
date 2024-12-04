@@ -8,11 +8,12 @@ import imdbLogo from "../../assets/images/imdb.png";
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/movies");
+        const response = await axios.get("https://programacionwebii-production.up.railway.app/movies");
         setMovies(response.data);
       } catch (error) {
         console.error("Error fetching movies:", error);

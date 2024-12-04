@@ -12,7 +12,7 @@ const Reviews = () => {
     useEffect(() => {
         const fecthReviews = async () => {
             try{
-                const response = await fetch ('http://localhost:3000/reviews', {
+                const response = await fetch ('https://programacionwebii-production.up.railway.app/reviews', {
                     method: "GET"
                 })
                 if (!response.ok){
@@ -40,7 +40,7 @@ const Reviews = () => {
     const handleDelete = async (reviewId) => {
         if (window.confirm('¿Estás seguro de que deseas eliminar esta review?')) {
             try {
-                const response = await fetch(`http://localhost:3000/reviews/${reviewId}`, {
+                const response = await fetch(`https://programacionwebii-production.up.railway.app/reviews/${reviewId}`, {
                     method: "DELETE"
                 })
                 if (!response.ok) {
