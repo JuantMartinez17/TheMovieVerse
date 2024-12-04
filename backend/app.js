@@ -21,7 +21,7 @@ app.use('/movies', moviesRouter)
 app.use('/users', usersRouter)
 app.use('/reviews', reviewsRouter)
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)

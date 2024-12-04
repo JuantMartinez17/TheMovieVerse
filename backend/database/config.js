@@ -4,7 +4,7 @@ import p from 'picocolors'
 import express from 'express'
 import { corsMiddleware } from '../middlewares/cors.js'
 const app = express()
-const PORT = process.env.PORT || 3001 
+const PORT = process.env.PORT
 app.use(corsMiddleware())
 app.use(express.json())
 
