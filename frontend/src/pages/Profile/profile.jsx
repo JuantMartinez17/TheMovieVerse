@@ -17,7 +17,6 @@ const Profile = () => {
     if (storedUser) {
       const userData = JSON.parse(storedUser);
       setUser(userData);
-      console.log('usuario: ' + user)
       setFormData({ username: userData.username, email: userData.email });
     }
   }, []);
