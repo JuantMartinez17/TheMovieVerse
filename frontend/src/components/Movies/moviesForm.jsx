@@ -40,7 +40,7 @@ const MoviesForm = ({ id, handleCloseModal, movie, handleUpdateMovie }) => {
 
     const onSubmit = (data) => {
         if (id) {
-            axios.patch(`https://programacionwebii-production.up.railway.app/movies/${id}`, data)
+            axios.patch(`${process.env.REACT_APP_BACKEND_URL}/movies/${id}`, data)
                 .then((response) => {
                     handleUpdateMovie(response.data)
                     handleCloseModal()
@@ -50,7 +50,7 @@ const MoviesForm = ({ id, handleCloseModal, movie, handleUpdateMovie }) => {
                     console.error('Error al actualizar la película', error)
                 })
         }else {
-            axios.post('https://programacionwebii-production.up.railway.app/movies', data)
+            axios.post(`${process.env.REACT_APP_BACKEND_URL}/movies`, data)
                 .then((response) => {
                     handleUpdateMovie(response.data)
                     handleCloseModal()

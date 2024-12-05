@@ -14,7 +14,7 @@ const Login = () => {
         console.log("Logging in with: ", { email, password })
         setError("")
         try{
-            const response = await fetch("https://programacionwebii-production.up.railway.app/users/login", {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

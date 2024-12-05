@@ -29,7 +29,7 @@ const ReviewsForm = ({ id, handleCloseModal, review, handleUpdateReview }) => {
 
     const onSubmit = (data) => {
         if (id) {
-            axios.patch(`https://programacionwebii-production.up.railway.app/reviews/${id}`, data)
+            axios.patch(`${process.env.REACT_APP_BACKEND_URL}/reviews/${id}`, data)
                 .then((response) => {
                     handleUpdateReview(response.data)
                     handleCloseModal()
@@ -39,7 +39,7 @@ const ReviewsForm = ({ id, handleCloseModal, review, handleUpdateReview }) => {
                     console.error('Error al actualizar la review', error)
                 })
         }else {
-            axios.post('https://programacionwebii-production.up.railway.app/reviews', data)
+            axios.post(`${process.env.REACT_APP_BACKEND_URL}/reviews`, data)
                 .then((response) => {
                     handleUpdateReview(response.data)
                     handleCloseModal()

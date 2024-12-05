@@ -64,7 +64,7 @@ const Movie = () => {
     }
 
     try {
-      const response = await axios.post("https://programacionwebii-production.up.railway.app/reviews", {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/reviews`, {
         movieId: movieId,
         userId: userId,
         rating: ratingValue,

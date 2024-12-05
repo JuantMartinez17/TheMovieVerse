@@ -32,7 +32,7 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`https://programacionwebii-production.up.railway.app/users/${user.userId}`, {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/${user.userId}`, {
       method: "PATCH",
       body: JSON.stringify(formData),
       headers: {

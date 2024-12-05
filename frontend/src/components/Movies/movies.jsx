@@ -12,7 +12,7 @@ const Movies = () => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const response = await fetch('https://programacionwebii-production.up.railway.app/movies', {
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/movies`, {
                     method: "GET"
                 })
                 if (!response.ok) {
@@ -39,7 +39,7 @@ const Movies = () => {
     const handleDelete = async (movieId) => {
         if (window.confirm('¿Estás seguro de que deseas eliminar esta película?')) {
             try {
-                const response = await fetch(`https://programacionwebii-production.up.railway.app/movies/${movieId}`, {
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/movies/${movieId}`, {
                     method: "DELETE"
                 })
                 if (!response.ok) {

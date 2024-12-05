@@ -13,7 +13,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.get("https://programacionwebii-production.up.railway.app/movies");
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/movies`);
         setMovies(response.data);
       } catch (error) {
         console.error("Error fetching movies:", error);

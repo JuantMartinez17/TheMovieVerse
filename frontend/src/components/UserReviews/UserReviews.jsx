@@ -10,7 +10,7 @@ const UserReviews = ({ userId }) => {
   useEffect(() => {
     const fetchUserReviews = async () => {
       try {
-        const response = await axios.get(`https://programacionwebii-production.up.railway.app/reviews/user/${userId}`);
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/reviews/user/${userId}`);
         setReviews(response.data);
       } catch (error) {
         console.error("Error fetching reviews:", error);
@@ -47,7 +47,7 @@ const UserReviews = ({ userId }) => {
   const handleDelete = async (reviewId) => {
     if (window.confirm("Are you sure you want to delete this review?")) {
       try {
-        const response = await fetch(`http://localhost:3000/reviews/${reviewId}`, {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/reviews/${reviewId}`, {
           method: "DELETE",
         })
         if (!response.ok) {

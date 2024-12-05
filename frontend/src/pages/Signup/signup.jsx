@@ -26,7 +26,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post("https://programacionwebii-production.up.railway.app/users", formData, {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/users`, formData, {
                 headers: {
                     "Content-Type" : "application/json"
                 }

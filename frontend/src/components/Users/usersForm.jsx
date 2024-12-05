@@ -29,7 +29,7 @@ const UserForm = ({ id, handleCloseModal, user, handleUpdateUser }) => {
 
     const onSubmit = (data) => {
         if (id) {
-            axios.patch(`https://programacionwebii-production.up.railway.app/users/${id}`, data)
+            axios.patch(`${process.env.REACT_APP_BACKEND_URL}/users/${id}`, data)
                 .then((response) => {
                     handleUpdateUser(response.data);
                     handleCloseModal();
@@ -39,7 +39,7 @@ const UserForm = ({ id, handleCloseModal, user, handleUpdateUser }) => {
                     console.error('Error al actualizar el usuario', error);
                 });
         } else {
-            axios.post('https://programacionwebii-production.up.railway.app/users', data)
+            axios.post(`${process.env.REACT_APP_BACKEND_URL}/users`, data)
                 .then((response) => {
                     handleUpdateUser(response.data);
                     handleCloseModal();
