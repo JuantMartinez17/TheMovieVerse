@@ -110,3 +110,19 @@ html, body {
     color: rgba(156, 163, 175, 1);
   }
   
+  .navigate-login-btn{
+    background: none;
+    border: none;
+    color: #b19cd9;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    padding: 0;
+}
+
+.navigate-login-btn:hover {
+    color: #d8b4ff;
+    text-decoration: underline;
+}
