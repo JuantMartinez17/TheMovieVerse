@@ -41,6 +41,10 @@ const Login = () => {
         }
     }
 
+    const handleNavigateToSignup = () => {
+        navigate('/signup');
+    };
+
     return (
         <div className="login-page">
             <div className="header-login">
@@ -78,7 +82,9 @@ const Login = () => {
                 <button className="sign" type="submit">Sign in</button>
             </form>
             <p className="signup">Don't have an account?
-                <a rel="noopener noreferrer" href="/signup" className="">Sign up</a>
+            <button onClick={handleNavigateToSignup} className="navigate-signup-btn">
+                        Sign up
+                    </button>
             </p>
         </div>
         </div> 
