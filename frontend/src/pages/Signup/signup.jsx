@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios'
 import './signup.css'
 import { useNavigate } from 'react-router'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import Logo from '../../assets/images/logo.png'
 
 const Signup = () => {
