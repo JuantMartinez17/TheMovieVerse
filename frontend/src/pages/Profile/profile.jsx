@@ -87,6 +87,7 @@ const Profile = () => {
         </div>
       </div>
       <div>
+        <h4 className="reviews-title">User's Reviews</h4>
         <UserReviews userId={user.userId} />
       </div>
 

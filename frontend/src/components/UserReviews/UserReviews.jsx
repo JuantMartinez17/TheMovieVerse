@@ -14,6 +14,10 @@ const UserReviews = ({ userId }) => {
         setReviews(response.data);
       } catch (error) {
         console.error("Error fetching reviews:", error);
+        if (error.response?.status === 404){
+          setReviews([])
+          return 
+        }
         setError(
           error.response?.data?.message ||
           error.message ||
@@ -61,12 +65,11 @@ const UserReviews = ({ userId }) => {
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return <p classname="error-message">{error}</p>;
   }
 
   return (
     <div className="mt-4 user-reviews">
-      <h4 className="reviews-title">User's Reviews</h4>
       {reviews.length > 0 ? (
         <div className="reviews-list">
           {reviews.map((review) => (
@@ -86,7 +89,7 @@ const UserReviews = ({ userId }) => {
           ))}
         </div>
       ) : (
-        <p>This user hasn't posted any reviews yet.</p>
+        <p className="no-reviews-message">You havent posted any reviews yet. Start reviewing now!</p>
       )}
     </div>
   );

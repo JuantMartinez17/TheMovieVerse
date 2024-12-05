@@ -155,3 +155,10 @@
   .cancel-button:hover {
     background-color: #444;
   }
+
+  .reviews-title {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+  }

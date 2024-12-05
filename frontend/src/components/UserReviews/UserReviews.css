@@ -6,13 +6,6 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.reviews-title {
-  font-size: 1.5rem;
-  color: #fff;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
 .reviews-list {
   display: flex;
   flex-direction: column;
@@ -78,4 +71,19 @@
 .delete-button:hover {
   color: #ff1a1a;
   transform: scale(1.1);
+}
+
+
+.no-reviews-message {
+  color: #888;
+  font-size: 16px;
+  text-align: center;
+  padding: 20px;
+}
+
+.error-message {
+  color: red;
+  font-size: 16px;
+  text-align: center;
+  padding: 20px;
 }
