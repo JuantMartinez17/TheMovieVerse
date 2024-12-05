@@ -6,7 +6,7 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:3007',
   'http://localhost:8080',
   'https://programacionwebii-production.up.railway.app/',
-  ' https://frabjous-sopapillas-eaf717.netlify.app/'
+  'https://frabjous-sopapillas-eaf717.netlify.app'
 ]
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({
   origin: (origin, callback) => {
