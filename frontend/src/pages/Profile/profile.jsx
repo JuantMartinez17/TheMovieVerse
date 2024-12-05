@@ -11,6 +11,7 @@ const Profile = () => {
     username: "",
     email: "",
   });
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -31,6 +32,10 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.username.trim()) {
+      setError("Username is required");
+      return
+    }
     const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/${user.userId}`, {
       method: "PATCH",
       body: JSON.stringify(formData),
@@ -67,13 +72,6 @@ const Profile = () => {
       <div className="container mt-4">
         <h2 className="profile-title">Profile</h2>
         <div className="profile-card mx-auto">
-          <div className="profile-img-container">
-            <img
-              src="https://via.placeholder.com/150"
-              alt="Profile"
-              className="profile-img"
-            />
-          </div>
           <div className="profile-details">
             <h5 className="profile-username">Welcome, {user.username}!</h5>
             <p className="profile-description">This is your profile page.</p>
@@ -95,6 +93,7 @@ const Profile = () => {
         <div className="modal">
           <div className="modal-content">
             <h3>Edit Profile</h3>
+            {error && <p className="error-message">{error}</p>}
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="username">Username</label>

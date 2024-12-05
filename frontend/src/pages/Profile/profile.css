@@ -6,6 +6,17 @@
     padding-bottom: 50px;
   }
 
+  .error-message{
+    color: #e74c3c;
+    font-size: 14px; 
+    margin-top: 10px;
+    padding: 5px; 
+    background-color: rgba(231, 76, 60, 0.1);
+    border-left: 4px solid #e74c3c; 
+    max-width: 100%; 
+    word-wrap: break-word;
+  }
+
   .profile-title {
     font-size: 2rem;
     font-weight: 600;
@@ -157,6 +168,7 @@
   }
 
   .reviews-title {
+    margin-top: 1.5rem;
     font-size: 1.5rem;
     color: #fff;
     margin-bottom: 20px;
