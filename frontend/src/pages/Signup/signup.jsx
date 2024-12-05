@@ -24,6 +24,10 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if (!validatePassword(formData.password)) {
+            setMessage("Password must contain at least 8 characters, one uppercase letter and one number")
+            return
+        }
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/users`, formData, {
                 headers: {
@@ -41,6 +45,11 @@ const Signup = () => {
     const handleNavigateToLogin = () => {
         navigate('/login');
     };
+
+    const validatePassword = password => {
+        const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/
+        return regex.test(password)
+    }
 
     return (
       <div className="signup-page">

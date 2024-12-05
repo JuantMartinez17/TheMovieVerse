@@ -118,6 +118,7 @@
     cursor: pointer;
     transition: color 0.3s ease-in-out;
     padding: 0;
+    padding-left: 0.2rem;
 }
 
 .navigate-signup-btn:hover {
