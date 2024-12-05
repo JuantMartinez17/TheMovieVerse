@@ -6,6 +6,10 @@ import Logo from '../../assets/images/logo.png'
 const NavBar = () => {
     const navigate = useNavigate()
 
+    const handleLogoClick = () => {
+        navigate("/home")
+    }
+
     const handleLogout = () => {
         localStorage.removeItem("TOKEN")
         localStorage.removeItem("user")
@@ -17,16 +21,20 @@ const NavBar = () => {
     }
 
     return (
-      <nav className="navbar navbar-expand shadow">
+        <nav className="navbar navbar-expand shadow">
             <div className="container">
-                <a className="navbar-brand d-flex align-items-center" href="/home">
+                <div
+                    className="navbar-brand d-flex align-items-center"
+                    onClick={handleLogoClick}
+                    style={{ cursor: "pointer" }}
+                >
                     <img
                         src={Logo}
                         alt=""
                         style={{ width: "40px", height: "40px", marginRight: "10px" }}
                     />
                     <span>MovieVerse</span>
-                </a>
+                </div>
                 <div className="d-flex">
                     <button
                         className="button me-2"
@@ -43,7 +51,7 @@ const NavBar = () => {
                 </div>
             </div>
         </nav>
-    )
+    );
 }
 
 export default NavBar
