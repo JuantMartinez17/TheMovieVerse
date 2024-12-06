@@ -8,7 +8,7 @@ GET http://localhost:3000/reviews/41
 GET https://programacionwebii-production.up.railway.app/reviews/movie/1
 
 ### Recuperar todas las reviews de un usuario
-GET http://localhost:3000/reviews/user/2
+GET https://programacionwebii-production.up.railway.app/reviews/user/1
 
 ### Crear una review
 POST https://programacionwebii-production.up.railway.app/reviews

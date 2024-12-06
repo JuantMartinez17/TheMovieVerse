@@ -26,6 +26,10 @@ const MovieReviews = ({ movieId }) => {
         const hasReview = response.data.some((review) => review.userId === userId);
         setUserHasReview(hasReview);
       } catch (error) {
+        if (error.response?.status === 404){
+          setReviews([])
+          return 
+        }
         console.error("Error fetching reviews:", error);
         setError(
           error.response?.data?.message || error.message || "Error loading reviews."
