@@ -53,6 +53,7 @@ export async function populateDatabase() {
             { title: "Braveheart", year: 1995, director: "Mel Gibson", duration: 178, poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyLao270hS64tsVZymPGhHT3E6LS1JITZnMQ&s", genre: "History", rate: 8.3 },
             { title: "Joker", year: 2019, director: "Todd Phillips", duration: 122, poster: "https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg", genre: "Crime", rate: 8.4 },
             { title: "Toy Story", year: 1995, director: "John Lasseter", duration: 81, poster: "https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg", genre: "Animation", rate: 8.3 },
+            { title: "A Ghost Story", year: 2017, director: "David Lowery", duration: 92, poster: "https://pics.filmaffinity.com/A_Ghost_Story-788590956-large.jpg", genre: "Drama", rate: 6.8 }
         ];
         const reviews = [
             { userId: 1, movieId: 1, rating: 5.0, comment: "An absolute masterpiece!" },

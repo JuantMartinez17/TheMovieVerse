@@ -11,7 +11,7 @@
 
 .rating-container {
   display: flex;
-  align-items: center; /* Alinea verticalmente los elementos dentro del contenedor */
+  align-items: center;
 }
 
 .movie-list {
@@ -44,8 +44,8 @@
 .imdb-logo {
   width: 20px;
   height: 20px;
-  margin-left: 5px; /* Espacio entre el rating y el logo */
-  vertical-align: middle; /* Asegura que el logo esté alineado con el texto */
+  margin-left: 5px;
+  vertical-align: middle;
 }
 
 .card-img {
@@ -56,7 +56,7 @@
 }
 
 .movie-rate {
-  margin-right: 5px; /* Espacio entre el rating y el logo */
+  margin-right: 5px;
   font-weight: bold;
 }
 
@@ -77,7 +77,7 @@
 .card-text {
   color: #bbb;
   display: flex;
-  align-items: center; /* Alinea el texto del rating y el logo */
+  align-items: center; 
   padding-left: 10px;
 }
 
