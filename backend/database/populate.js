@@ -50,7 +50,7 @@ export async function populateDatabase() {
             { title: "Star Wars: Episode V - The Empire Strikes Back", year: 1980, director: "Irvin Kershner", duration: 124, poster: "https://image.tmdb.org/t/p/w500/7BuH8itoSrLExs2YZSsM01Qk2no.jpg", genre: "Sci-Fi", rate: 8.7 },
             { title: "Schindler's List", year: 1993, director: "Steven Spielberg", duration: 195, poster: "https://imusic.b-cdn.net/images/item/original/363/5053083167363.jpg?2019-schindlers-list-4k-uhd-blu-ray&class=scaled&v=1554829624", genre: "History", rate: 9.0 },
             { title: "Saving Private Ryan", year: 1998, director: "Steven Spielberg", duration: 169, poster: "https://upload.wikimedia.org/wikipedia/en/a/ac/Saving_Private_Ryan_poster.jpg", genre: "War", rate: 8.6 },
-            { title: "Braveheart", year: 1995, director: "Mel Gibson", duration: 178, poster: "https://upload.wikimedia.org/wikipedia/en/a/ac/Saving_Private_Ryan_poster.jpg", genre: "History", rate: 8.3 },
+            { title: "Braveheart", year: 1995, director: "Mel Gibson", duration: 178, poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyLao270hS64tsVZymPGhHT3E6LS1JITZnMQ&s", genre: "History", rate: 8.3 },
             { title: "Joker", year: 2019, director: "Todd Phillips", duration: 122, poster: "https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg", genre: "Crime", rate: 8.4 },
             { title: "Toy Story", year: 1995, director: "John Lasseter", duration: 81, poster: "https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg", genre: "Animation", rate: 8.3 },
         ];
