@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { FaPen, FaTrashAlt } from "react-icons/fa";
+import { FaPen, FaTrashAlt, FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import "./MovieReviews.css";
 
 const MovieReviews = ({ movieId }) => {
@@ -104,21 +104,19 @@ const MovieReviews = ({ movieId }) => {
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0)
     const stars = [];
 
     for (let i = 0; i < fullStars; i++) {
-      stars.push("★");
+      stars.push(<FaStar key={`full-${i}`} className="star full-star" />)
     }
     if (hasHalfStar) {
-      stars.push("½");
+      stars.push(<FaStarHalfAlt key="half" className="star half-star" />)
     }
-    while (stars.length < 5) {
-      stars.push("☆");
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<FaRegStar key={`empty-${i}`} className="star empty-star" />)
     }
-
-    return stars.map((star, index) => (
-      <span key={index} className="star">{star}</span>
-    ));
+    return stars
   };
 
   if (error) {
