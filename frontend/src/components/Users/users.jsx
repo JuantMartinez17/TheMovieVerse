@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import UserForm from './usersForm'
+import React, { useEffect, useState } from "react";
+import UserForm from './usersForm';
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -9,23 +9,24 @@ const Users = () => {
     const [currentUserId, setCurrentUserId] = useState(null);
     const [userToEdit, setUserToEdit] = useState(null);
 
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users`, {
-                    method: "GET"
-                });
-                if (!response.ok) {
-                    throw new Error('Error al cargar usuarios');
-                }
-                const data = await response.json();
-                setUsers(data);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
+    const fetchUsers = async () => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users`, {
+                method: "GET",
+            });
+            if (!response.ok) {
+                throw new Error('Error al cargar usuarios');
             }
-        };
+            const data = await response.json();
+            setUsers(data);
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
         fetchUsers();
     }, []);
 
@@ -40,7 +41,7 @@ const Users = () => {
         if (window.confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
             try {
                 const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/${userId}`, {
-                    method: "DELETE"
+                    method: "DELETE",
                 });
                 if (!response.ok) {
                     throw new Error('Error al eliminar el usuario');
@@ -58,18 +59,14 @@ const Users = () => {
         setUserToEdit(null);
     };
 
-    const handleUpdateUser = (updatedUser) => {
-        setUsers((prevUsers) => 
-            prevUsers.map((user) => 
-                user.userId === updatedUser.userId ? updatedUser : user
-            )
-        );
+    const handleRefresh = () => {
+        fetchUsers();
     };
 
     const handleAddUser = () => {
-        setIsFormOpen(true)
-        setUserToEdit(null)
-    }
+        setIsFormOpen(true);
+        setUserToEdit(null);
+    };
 
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>Error al cargar usuarios</p>;
@@ -89,7 +86,7 @@ const Users = () => {
                         id={currentUserId}
                         handleCloseModal={handleCloseForm}
                         user={userToEdit}
-                        handleUpdateUser={handleUpdateUser}
+                        handleRefresh={handleRefresh}
                     />
                 </div>
             )}
@@ -122,7 +119,7 @@ const Users = () => {
                                         >
                                             <i className="bi bi-pencil-fill"></i> Editar
                                         </button>
-                                        <button style={{ margin: '15px' }}
+                                        <button
                                             className="btn btn-danger btn-sm"
                                             onClick={() => handleDelete(user.userId)}
                                         >
@@ -142,7 +139,7 @@ const Users = () => {
                 </table>
             </div>
         </div>
-    )
+    );
 };
 
 export default Users;
