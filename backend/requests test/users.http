@@ -1,9 +1,9 @@
 ### Recuperar todos los usuarios
-GET http://localhost:3000/users
+GET https://programacionwebii-production.up.railway.app/users
 ### Recuperar un usuario por id
-GET http://localhost:3000/users/23
+GET https://programacionwebii-production.up.railway.app/users/23
 ### Crear un usuario
-POST http://localhost:3000/users
+POST https://programacionwebii-production.up.railway.app/users
 Content-Type: application/json
 
 {
@@ -12,16 +12,16 @@ Content-Type: application/json
     "password": "juanps17",
 }
 ###Actualizar una pelicula
-PATCH http://localhost:3000/users/23
+PATCH https://programacionwebii-production.up.railway.app/users/23
 Content-Type: application/json
 
 {
     "role": "admin"
 }
 ###Eliminar un usuario
-DELETE http://localhost:3000/users/23
+DELETE https://programacionwebii-production.up.railway.app/users/23
 ###Realizar login
-POST http://localhost:3000/users/login
+POST https://programacionwebii-production.up.railway.app/users/login
 Content-Type: application/json
 
 {
@@ -30,4 +30,4 @@ Content-Type: application/json
 }
 
 ###Logout, se debe borrar la cookie con el token
-POST http://localhost:3000/users/logout
+POST https://programacionwebii-production.up.railway.app/users/logout

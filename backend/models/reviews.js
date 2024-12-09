@@ -1,5 +1,6 @@
 import { Review, User, Movie } from '../database/config.js'
 import p from 'picocolors'
+
 export class ReviewsModel{
 
     static async getAll(){
