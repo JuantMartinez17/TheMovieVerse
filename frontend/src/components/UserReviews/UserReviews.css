@@ -87,3 +87,21 @@
   text-align: center;
   padding: 20px;
 }
+
+.star {
+  color: gold;
+  font-size: 1.5rem;
+  margin-right: 2px;
+}
+
+.full-star {
+  color: #ffc107;
+}
+
+.half-star {
+  color: #ffc107;
+}
+
+.empty-star {
+  color: #ddd;
+}
