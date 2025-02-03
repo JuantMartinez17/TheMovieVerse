@@ -17,7 +17,7 @@ This is a web application developed as part of my professional portfolio, aiming
 - **Backend with Express.js and Node.js**: The backend is developed with Express.js and Node.js, providing a RESTful API for frontend communication.
 - **Validations with Zod**: I use Zod for data validations in the backend, ensuring user input is correct and consistent.
 - **Frontend with React.js**: The frontend is developed with React.js, allowing for an interactive, modular, and efficient user interface.
-- **Authentication and Authorization (if applicable)**: Implementation of a basic authentication system using JWT tokens to ensure user security.
+- **Authentication and Authorization**: Implementation of a basic authentication system using JWT tokens to ensure user security.
 - **RESTful API**: The application exposes RESTful endpoints to interact with application resources.
 - **Error Management**: Proper controls have been implemented to handle errors in the backend and improve user experience.
 
