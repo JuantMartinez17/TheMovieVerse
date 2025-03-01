@@ -91,9 +91,9 @@ Open your browser and go to http://localhost:3000 to see the application running
  ### Project Structure
  ```bash
     /your-repository
-   |-- /backend                # Backend (Node.js / Express.js)
+   |-- /backend                # Backend
    |   |-- /controllers        # Controllers
-   |   |-- /models             # Data models (e.g., database connection)
+   |   |-- /models             # Data models
    |   |-- /routes             # API routes
    |   |-- /services           # Business logic
    |   |-- /utils              # Utilities and configurations
