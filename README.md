@@ -108,7 +108,7 @@ Open your browser and go to http://localhost:3000 to see the application running
 ```
 
 ## Functionalities
-- **User Registration and Login (if applicable)**
+- **User Registration and Login**
 - **Resource Viewing**: Users can view a list of items.
 - **API Interaction**: The frontend communicates with the backend to perform CRUD operations (Create, Read, Update, Delete).
 - **Validations**: Using Zod in the backend and yup in the frontend to ensure input data is correct and secure.
